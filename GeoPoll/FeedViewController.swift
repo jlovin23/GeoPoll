@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 // HERE IS MY FINAL COMMENT
-// HERE IS MY RESPO TO THATte
+// I have responded
 class FeedViewController: UIViewController {
 
     override func viewDidLoad() {
