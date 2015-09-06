@@ -8,7 +8,7 @@
 
 import UIKit
 import Parse
-
+//added this comment on my own comp
 class FeedViewController: UIViewController {
 
     override func viewDidLoad() {
