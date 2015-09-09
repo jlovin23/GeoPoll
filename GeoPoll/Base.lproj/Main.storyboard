@@ -107,7 +107,89 @@
                     <view key="view" contentMode="scaleToFill" id="Yet-a3-e0P">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ohh-HU-5bZ">
+                                <rect key="frame" x="0.0" y="559" width="600" height="167"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d3G-AB-MxE">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="41"/>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="41" id="ItQ-jd-wPf"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                        <state key="normal" title="+">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="dropdownActionButtonPressed:" destination="R8r-c4-bEo" eventType="touchUpInside" id="6VY-H5-LSm"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w33-XX-chr">
+                                        <rect key="frame" x="251" y="60" width="99" height="88"/>
+                                        <state key="normal" image="direct_icon">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="directPressed:" destination="R8r-c4-bEo" eventType="touchUpInside" id="Oeh-dw-f5Y"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8eV-rJ-5Og">
+                                        <rect key="frame" x="8" y="60" width="99" height="88"/>
+                                        <state key="normal" image="location_icon">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="locationPressed:" destination="R8r-c4-bEo" eventType="touchUpInside" id="UP0-y4-ZZj"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zpV-eb-cSu">
+                                        <rect key="frame" x="493" y="60" width="99" height="88"/>
+                                        <state key="normal" image="social_icon">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="addFriendPressed:" destination="R8r-c4-bEo" eventType="touchUpInside" id="wfl-3d-vfz"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="d3G-AB-MxE" secondAttribute="trailing" id="1sl-OY-9k1"/>
+                                    <constraint firstItem="w33-XX-chr" firstAttribute="top" secondItem="8eV-rJ-5Og" secondAttribute="top" id="1y8-EZ-7GF"/>
+                                    <constraint firstItem="8eV-rJ-5Og" firstAttribute="bottom" secondItem="w33-XX-chr" secondAttribute="bottom" id="64R-r7-u0m"/>
+                                    <constraint firstItem="w33-XX-chr" firstAttribute="bottom" secondItem="zpV-eb-cSu" secondAttribute="bottom" id="7nh-qc-dPA"/>
+                                    <constraint firstItem="zpV-eb-cSu" firstAttribute="top" secondItem="d3G-AB-MxE" secondAttribute="bottom" id="8cy-Bw-IvH"/>
+                                    <constraint firstItem="w33-XX-chr" firstAttribute="top" secondItem="zpV-eb-cSu" secondAttribute="top" id="BOJ-c8-sQk"/>
+                                    <constraint firstAttribute="bottom" secondItem="8eV-rJ-5Og" secondAttribute="bottom" constant="19" id="Kc8-tC-2It"/>
+                                    <constraint firstItem="zpV-eb-cSu" firstAttribute="trailing" secondItem="ohh-HU-5bZ" secondAttribute="trailingMargin" id="KzH-bz-BOx"/>
+                                    <constraint firstItem="8eV-rJ-5Og" firstAttribute="top" secondItem="d3G-AB-MxE" secondAttribute="bottom" constant="19" id="Qjt-qZ-AMI"/>
+                                    <constraint firstItem="8eV-rJ-5Og" firstAttribute="top" secondItem="d3G-AB-MxE" secondAttribute="bottom" constant="19" id="RaY-yW-qhx"/>
+                                    <constraint firstItem="zpV-eb-cSu" firstAttribute="top" secondItem="d3G-AB-MxE" secondAttribute="bottom" id="WS5-zk-wBG"/>
+                                    <constraint firstItem="zpV-eb-cSu" firstAttribute="top" secondItem="d3G-AB-MxE" secondAttribute="bottom" id="bYu-or-GGK"/>
+                                    <constraint firstItem="8eV-rJ-5Og" firstAttribute="leading" secondItem="ohh-HU-5bZ" secondAttribute="leadingMargin" id="lsf-pO-L6P"/>
+                                    <constraint firstItem="w33-XX-chr" firstAttribute="centerX" secondItem="d3G-AB-MxE" secondAttribute="centerX" id="m4d-sa-vrt"/>
+                                    <constraint firstItem="d3G-AB-MxE" firstAttribute="top" secondItem="ohh-HU-5bZ" secondAttribute="top" id="wCO-Ce-4wP"/>
+                                    <constraint firstItem="d3G-AB-MxE" firstAttribute="leading" secondItem="ohh-HU-5bZ" secondAttribute="leading" id="xcp-dw-ozE"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="RaY-yW-qhx"/>
+                                        <exclude reference="1y8-EZ-7GF"/>
+                                        <exclude reference="8cy-Bw-IvH"/>
+                                        <exclude reference="WS5-zk-wBG"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="ohh-HU-5bZ" secondAttribute="trailing" id="9AH-LR-ZDH"/>
+                            <constraint firstItem="ohh-HU-5bZ" firstAttribute="top" secondItem="dxz-zM-woT" secondAttribute="bottom" constant="495" id="ZSk-ai-jLP"/>
+                            <constraint firstItem="ohh-HU-5bZ" firstAttribute="leading" secondItem="Yet-a3-e0P" secondAttribute="leading" id="lqB-IO-847"/>
+                            <constraint firstAttribute="bottom" secondItem="ohh-HU-5bZ" secondAttribute="bottom" constant="-126" id="wL4-cO-wBu"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Umb-8y-Cl6">
                         <barButtonItem key="rightBarButtonItem" title="Log out" id="JyD-Qw-Ig1">
@@ -116,10 +198,14 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="dropdownActionButton" destination="d3G-AB-MxE" id="diJ-Er-lyQ"/>
+                        <outlet property="dropdownView" destination="ohh-HU-5bZ" id="biR-9X-g7m"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fGq-9L-3t2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1682" y="246"/>
+            <point key="canvasLocation" x="1834" y="315"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zch-Pd-cAd">
@@ -137,10 +223,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7fa-DA-rV4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="963" y="246"/>
+            <point key="canvasLocation" x="1140" y="315"/>
         </scene>
     </scenes>
     <resources>
         <image name="Logo" width="1240" height="200"/>
+        <image name="direct_icon" width="99" height="99"/>
+        <image name="location_icon" width="99" height="99"/>
+        <image name="social_icon" width="99" height="99"/>
     </resources>
 </document>
