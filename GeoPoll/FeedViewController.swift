@@ -37,8 +37,11 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         questionTableView.separatorStyle = .None
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(animated: Bool)
+    {
         self.dropdownView.frame = CGRectMake(0, self.view.frame.size.height-dropdownActionButton.frame.size.height, dropdownView.frame.size.width, dropdownView.frame.size.height)
+        
+        super.viewDidAppear(animated)
     }
     
     @IBAction func logoutPressed(sender: UIBarButtonItem)

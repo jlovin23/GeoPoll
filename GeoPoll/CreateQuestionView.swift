@@ -23,6 +23,23 @@ class CreateQuestionView: UIViewController, UITableViewDelegate, UITableViewData
         addOptionButton.backgroundColor = OurColors.ponderBlue
         addOptionButton.layer.cornerRadius = 4
         
+        styleQuestionField()
+        
+        let customBackView = UIView(frame: CGRectMake(0, 0, 100, self.navigationController!.navigationBar.frame.size.height))
+        let arrowButton = UIButton()
+        arrowButton.setTitle("←", forState: .Normal)
+        arrowButton.addTarget(self, action: "popBack", forControlEvents: UIControlEvents.TouchUpInside)
+        customBackView.addSubview(arrowButton)
+        navigationItem.hidesBackButton = true
+        self.navigationController?.navigationItem.leftBarButtonItem?.customView = customBackView
+    }
+
+    func popBack(){
+        navigationController?.popViewControllerAnimated(true)
+    }
+    
+    func styleQuestionField()
+    {
         let border = CALayer()
         let width = CGFloat(2.0)
         border.borderColor = OurColors.ponderBlue.CGColor
@@ -32,7 +49,6 @@ class CreateQuestionView: UIViewController, UITableViewDelegate, UITableViewData
         questionLabel.layer.addSublayer(border)
         questionLabel.layer.masksToBounds = true
     }
-
     // MARK: Table view
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
