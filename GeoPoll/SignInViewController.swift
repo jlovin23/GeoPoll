@@ -8,8 +8,9 @@
 
 import UIKit
 import Parse
-//here is a comment
-class SignInViewController: UIViewController {
+
+class SignInViewController: UIViewController
+{
 
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
