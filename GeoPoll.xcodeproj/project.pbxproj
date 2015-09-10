@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F2777B71BA1BE610036F21E /* CreateQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2777B61BA1BE610036F21E /* CreateQuestionView.swift */; };
+		8F2777B91BA1C0920036F21E /* OptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2777B81BA1C0920036F21E /* OptionCell.swift */; };
 		8F53DA691B9C9B9400808773 /* OurColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F53DA681B9C9B9400808773 /* OurColors.swift */; };
 		8F6AF2341B9C8559002FF16B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F6AF2331B9C8559002FF16B /* AudioToolbox.framework */; };
 		8F6AF2371B9C8571002FF16B /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F6AF2351B9C8571002FF16B /* Bolts.framework */; };
@@ -27,6 +29,7 @@
 		8FB894F51B9BDF0400E93208 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8FB894F41B9BDF0400E93208 /* Images.xcassets */; };
 		8FB894F81B9BDF0400E93208 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FB894F61B9BDF0400E93208 /* LaunchScreen.xib */; };
 		8FB895041B9BDF0400E93208 /* GeoPollTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB895031B9BDF0400E93208 /* GeoPollTests.swift */; };
+		8FC66A011BA0FE9E00799AB4 /* QuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC66A001BA0FE9E00799AB4 /* QuestionCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8F2777B61BA1BE610036F21E /* CreateQuestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateQuestionView.swift; sourceTree = "<group>"; };
+		8F2777B81BA1C0920036F21E /* OptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionCell.swift; sourceTree = "<group>"; };
 		8F53DA681B9C9B9400808773 /* OurColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OurColors.swift; sourceTree = "<group>"; };
 		8F6AF2331B9C8559002FF16B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		8F6AF2351B9C8571002FF16B /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
@@ -64,6 +69,7 @@
 		8FB894FD1B9BDF0400E93208 /* GeoPollTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeoPollTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FB895021B9BDF0400E93208 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8FB895031B9BDF0400E93208 /* GeoPollTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoPollTests.swift; sourceTree = "<group>"; };
+		8FC66A001BA0FE9E00799AB4 /* QuestionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,11 +143,14 @@
 		8FB894EA1B9BDF0400E93208 /* GeoPoll */ = {
 			isa = PBXGroup;
 			children = (
-				8FB894ED1B9BDF0400E93208 /* AppDelegate.swift */,
-				8FB894EF1B9BDF0400E93208 /* SignInViewController.swift */,
 				8FB894F11B9BDF0400E93208 /* Main.storyboard */,
+				8F2777B81BA1C0920036F21E /* OptionCell.swift */,
+				8FB894EF1B9BDF0400E93208 /* SignInViewController.swift */,
 				8F6AF24B1B9C8EB8002FF16B /* FeedViewController.swift */,
+				8F2777B61BA1BE610036F21E /* CreateQuestionView.swift */,
 				8FB894F41B9BDF0400E93208 /* Images.xcassets */,
+				8FC66A001BA0FE9E00799AB4 /* QuestionCell.swift */,
+				8FB894ED1B9BDF0400E93208 /* AppDelegate.swift */,
 				8FB894F61B9BDF0400E93208 /* LaunchScreen.xib */,
 				8F53DA681B9C9B9400808773 /* OurColors.swift */,
 				8FB894EB1B9BDF0400E93208 /* Supporting Files */,
@@ -276,8 +285,11 @@
 			files = (
 				8FB894F01B9BDF0400E93208 /* SignInViewController.swift in Sources */,
 				8F6AF24C1B9C8EB8002FF16B /* FeedViewController.swift in Sources */,
+				8F2777B91BA1C0920036F21E /* OptionCell.swift in Sources */,
 				8F53DA691B9C9B9400808773 /* OurColors.swift in Sources */,
 				8FB894EE1B9BDF0400E93208 /* AppDelegate.swift in Sources */,
+				8F2777B71BA1BE610036F21E /* CreateQuestionView.swift in Sources */,
+				8FC66A011BA0FE9E00799AB4 /* QuestionCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
