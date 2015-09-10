@@ -182,11 +182,42 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="126" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="LQE-WM-XAZ">
+                                <rect key="frame" x="0.0" y="64" width="600" height="496"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="126" id="P8r-f4-rk2" customClass="QuestionCell" customModule="GeoPoll" customModuleProvider="target">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P8r-f4-rk2" id="9Ya-e1-qGk">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hNk-Zz-WWQ">
+                                                    <rect key="frame" x="279" y="52" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="label" destination="hNk-Zz-WWQ" id="gmk-Ny-NGT"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="R8r-c4-bEo" id="EAA-TD-xgM"/>
+                                    <outlet property="delegate" destination="R8r-c4-bEo" id="mUE-Sn-8HY"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="LQE-WM-XAZ" secondAttribute="trailing" constant="-16" id="Msf-Go-oMM"/>
+                            <constraint firstItem="LQE-WM-XAZ" firstAttribute="leading" secondItem="Yet-a3-e0P" secondAttribute="leadingMargin" constant="-16" id="QuT-x0-hYq"/>
                             <constraint firstItem="ohh-HU-5bZ" firstAttribute="bottom" secondItem="dmb-dd-zDK" secondAttribute="top" constant="126" id="UZH-M4-eF8"/>
+                            <constraint firstItem="dmb-dd-zDK" firstAttribute="top" secondItem="LQE-WM-XAZ" secondAttribute="bottom" constant="40" id="Zvt-hT-wly"/>
                             <constraint firstItem="ohh-HU-5bZ" firstAttribute="leading" secondItem="Yet-a3-e0P" secondAttribute="leading" id="gtY-hF-Qnl"/>
+                            <constraint firstItem="LQE-WM-XAZ" firstAttribute="top" secondItem="dxz-zM-woT" secondAttribute="bottom" id="jt4-ZC-iA3"/>
                             <constraint firstAttribute="trailing" secondItem="ohh-HU-5bZ" secondAttribute="trailing" id="qNr-Gu-qyn"/>
                             <constraint firstItem="ohh-HU-5bZ" firstAttribute="top" secondItem="dxz-zM-woT" secondAttribute="bottom" constant="495" id="u5a-nk-n4E"/>
                         </constraints>
@@ -201,6 +232,7 @@
                     <connections>
                         <outlet property="dropdownActionButton" destination="d3G-AB-MxE" id="diJ-Er-lyQ"/>
                         <outlet property="dropdownView" destination="ohh-HU-5bZ" id="biR-9X-g7m"/>
+                        <outlet property="questionTableView" destination="LQE-WM-XAZ" id="EQ9-De-dtM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fGq-9L-3t2" userLabel="First Responder" sceneMemberID="firstResponder"/>

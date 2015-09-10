@@ -9,16 +9,21 @@
 import UIKit
 import Parse
 
-class FeedViewController: UIViewController {
+class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var dropdownView: UIView!
     @IBOutlet weak var dropdownActionButton: UIButton!
+    @IBOutlet weak var questionTableView: UITableView!
     
-<<<<<<< HEAD
     var popupDrawerIsShowing = false
-=======
+    enum QuestionTypes
+    {
+        case Direct
+        case Local
+    }
+    var questionType: QuestionTypes?
     var questions: Array<PFObject>!
->>>>>>> 71c05cb5ffb9a68961cb608d569339e7479780bd
+    let fakeData = ["this", "thaat"]
 
     override func viewDidLoad()
     {
@@ -61,19 +66,22 @@ class FeedViewController: UIViewController {
                 questions.append(quest)
             }
         }
+    }
+    
+    
+    @IBAction func locationPressed(sender: UIButton)
+    {
+        questionType = .Local
         
-        questions.sor
     }
     
-    
-    @IBAction func locationPressed(sender: UIButton) {
+    @IBAction func directPressed(sender: UIButton)
+    {
+        questionType = .Direct
     }
     
-    @IBAction func directPressed(sender: UIButton) {
-    }
-    
-
-    @IBAction func addFriendPressed(sender: UIButton) {
+    @IBAction func addFriendPressed(sender: UIButton)
+    {
     }
     
     @IBAction func dropdownActionButtonPressed(sender: UIButton)
@@ -91,4 +99,25 @@ class FeedViewController: UIViewController {
             popupDrawerIsShowing = true
         }
     }
+    
+    // MARK: Table View
+
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return fakeData.count
+        
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! QuestionCell
+        
+        cell.label.text = fakeData[indexPath.row]
+        
+        return cell
+        
+    }
+    
 }
