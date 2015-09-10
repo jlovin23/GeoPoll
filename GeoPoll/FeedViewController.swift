@@ -28,6 +28,12 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        navigationController!.navigationBar.barTintColor = OurColors.ponderBlue
+        navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+        
+        dropdownActionButton.backgroundColor = OurColors.ponderBlue
     }
     
     override func viewDidAppear(animated: Bool) {
