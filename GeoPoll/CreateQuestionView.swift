@@ -10,17 +10,34 @@ import UIKit
 
 class CreateQuestionView: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var addOptionButton: UIButton!
+    @IBOutlet weak var questionLabel: UITextField!
+    
+    var numberOfOptions = 2
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        tableView.separatorStyle = .None
+        addOptionButton.backgroundColor = OurColors.ponderBlue
+        addOptionButton.layer.cornerRadius = 4
+        
+        let border = CALayer()
+        let width = CGFloat(2.0)
+        border.borderColor = OurColors.ponderBlue.CGColor
+        border.frame = CGRect(x: 0, y: questionLabel.frame.size.height - width, width:  view.frame.size.width, height: questionLabel.frame.size.height)
+        border.borderWidth = width
+        
+        questionLabel.layer.addSublayer(border)
+        questionLabel.layer.masksToBounds = true
     }
 
     // MARK: Table view
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return 2
+        return numberOfOptions
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
@@ -34,6 +51,11 @@ class CreateQuestionView: UIViewController, UITableViewDelegate, UITableViewData
         
         cell.optionTextField.placeholder = "Option \(indexPath.row + 1)"
         cell.selectionStyle = .None
+        cell.optionTextField.layer.cornerRadius = 4.0
+        cell.optionTextField.layer.borderColor = OurColors.ponderBlue.CGColor
+        cell.optionTextField.layer.borderWidth = 2
+        cell.questionNumberField.text = "\(indexPath.row + 1)"
+        cell.questionNumberField.textColor = OurColors.ponderBlue
         
         return cell
         
@@ -42,6 +64,8 @@ class CreateQuestionView: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBAction func addOption(sender: UIButton)
     {
+        numberOfOptions++
+        tableView.reloadData() 
     }
 
 }

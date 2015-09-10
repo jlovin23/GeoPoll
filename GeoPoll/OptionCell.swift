@@ -11,6 +11,7 @@ import UIKit
 class OptionCell: UITableViewCell {
 
     @IBOutlet weak var optionTextField: UITextField!
+    @IBOutlet weak var questionNumberField: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
