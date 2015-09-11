@@ -10,8 +10,6 @@ import Parse
 
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var dropdownView: UIView!
-    @IBOutlet weak var dropdownActionButton: UIButton!
     @IBOutlet weak var questionTableView: UITableView!
     
     var popupDrawerIsShowing = false
@@ -32,16 +30,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         
-        dropdownActionButton.backgroundColor = OurColors.ponderBlue
-        
         questionTableView.separatorStyle = .None
-    }
-    
-    override func viewDidAppear(animated: Bool)
-    {
-        self.dropdownView.frame = CGRectMake(0, self.view.frame.size.height-dropdownActionButton.frame.size.height, dropdownView.frame.size.width, dropdownView.frame.size.height)
-        
-        super.viewDidAppear(animated)
     }
     
     @IBAction func logoutPressed(sender: UIBarButtonItem)
@@ -76,45 +65,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                 questions.append(quest)
             }
         }
-    }
-    
-    
-    @IBAction func locationPressed(sender: UIButton)
-    {
-        questionType = .Local
-        
-        performSegueWithIdentifier("goToQuestionCreate", sender: self)
-    }
-    
-    @IBAction func directPressed(sender: UIButton)
-    {
-        questionType = .Direct
-        
-        performSegueWithIdentifier("goToQuestionCreate", sender: self)
-    }
-    
-    @IBAction func addFriendPressed(sender: UIButton)
-    {
-    }
-    
-    @IBAction func dropdownActionButtonPressed(sender: UIButton)
-    {
-        if popupDrawerIsShowing {
-            UIView.animateWithDuration(0.4, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.3, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
-                self.dropdownView.frame = CGRectMake(0, self.view.frame.size.height-self.dropdownActionButton.frame.size.height, self.dropdownView.frame.size.width, self.dropdownView.frame.size.height)
-            }, completion: nil)
-            
-            popupDrawerIsShowing = false
-        } else {
-            UIView.animateWithDuration(0.4, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.3, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
-                self.dropdownView.frame = CGRectMake(0, self.view.frame.size.height-self.dropdownView.frame.size.height, self.dropdownView.frame.size.width, self.dropdownView.frame.size.height)
-                }, completion: nil)
-            popupDrawerIsShowing = true
-        }
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
     }
     
     // MARK: Table View
@@ -164,4 +114,10 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                 }, completion: nil)
         }*/
     }
+    
+    @IBAction func showAddQuestionPopup(sender: UIButton)
+    {
+        performSegueWithIdentifier("showAddMenu", sender: self)
+    }
+    
 }
