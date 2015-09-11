@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -160,6 +161,9 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w33-XX-chr">
                                         <rect key="frame" x="251" y="60" width="99" height="88"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="w33-XX-chr" secondAttribute="height" multiplier="9:8" id="Vw7-ld-da2"/>
+                                        </constraints>
                                         <state key="normal" image="direct_icon">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -169,6 +173,9 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8eV-rJ-5Og">
                                         <rect key="frame" x="8" y="60" width="99" height="88"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="8eV-rJ-5Og" secondAttribute="height" multiplier="9:8" id="IYF-he-tZL"/>
+                                        </constraints>
                                         <state key="normal" image="location_icon">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -178,6 +185,9 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zpV-eb-cSu">
                                         <rect key="frame" x="493" y="60" width="99" height="88"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="zpV-eb-cSu" secondAttribute="height" multiplier="9:8" id="pzu-5b-6wL"/>
+                                        </constraints>
                                         <state key="normal" image="social_icon">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -234,7 +244,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Feed" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qu1-3l-6jD">
-                                        <rect key="frame" x="8" y="6" width="39" height="21"/>
+                                        <rect key="frame" x="0.0" y="6" width="39" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -272,17 +282,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Question" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xiy-kx-ayC">
-                                <rect key="frame" x="16" y="72" width="568" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="rJH-Yh-77j"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="lpH-7V-MwJ">
-                                <rect key="frame" x="0.0" y="140" width="600" height="460"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jz8-bv-uhT">
+                                    <rect key="frame" x="0.0" y="156" width="600" height="45"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="178" id="pve-Ko-8Q9"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                    <state key="normal" title="Add option">
+                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="pve-Ko-8Q9"/>
+                                        </mask>
+                                    </variation>
+                                    <connections>
+                                        <action selector="addOption:" destination="tho-zj-pGK" eventType="touchUpInside" id="tdB-NX-vFo"/>
+                                    </connections>
+                                </button>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="70" id="iO7-gV-0xW" customClass="OptionCell" customModule="GeoPoll" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -300,7 +322,7 @@
                                                         <constraint firstAttribute="width" constant="40" id="VYV-zt-mwp"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -325,34 +347,33 @@
                                     <outlet property="delegate" destination="tho-zj-pGK" id="MkX-he-1Df"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jz8-bv-uhT">
-                                <rect key="frame" x="211" y="559" width="178" height="45"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Question" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xiy-kx-ayC">
+                                <rect key="frame" x="0.0" y="64" width="600" height="68"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="178" id="pve-Ko-8Q9"/>
+                                    <constraint firstAttribute="height" constant="68" id="ikx-V5-zb3"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                <state key="normal" title="Add option">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="addOption:" destination="tho-zj-pGK" eventType="touchUpInside" id="tdB-NX-vFo"/>
-                                </connections>
-                            </button>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="6AH-MQ-wyY" firstAttribute="top" secondItem="jz8-bv-uhT" secondAttribute="bottom" constant="-4" id="04U-VM-ZTO"/>
-                            <constraint firstItem="xiy-kx-ayC" firstAttribute="centerX" secondItem="jz8-bv-uhT" secondAttribute="centerX" id="FwW-yd-7zc"/>
-                            <constraint firstItem="lpH-7V-MwJ" firstAttribute="leading" secondItem="lMr-AE-LEL" secondAttribute="leading" id="HR5-8q-Ulb"/>
-                            <constraint firstAttribute="trailing" secondItem="lpH-7V-MwJ" secondAttribute="trailing" id="JTU-Da-eAm"/>
-                            <constraint firstItem="lpH-7V-MwJ" firstAttribute="bottom" secondItem="6AH-MQ-wyY" secondAttribute="top" id="NWi-QE-Zu0"/>
-                            <constraint firstItem="lpH-7V-MwJ" firstAttribute="centerX" secondItem="jz8-bv-uhT" secondAttribute="centerX" id="SZV-sl-SXr"/>
-                            <constraint firstItem="xiy-kx-ayC" firstAttribute="top" secondItem="AJl-YN-FMN" secondAttribute="bottom" constant="8" symbolic="YES" id="dfD-Lu-QdP"/>
-                            <constraint firstItem="6AH-MQ-wyY" firstAttribute="top" secondItem="jz8-bv-uhT" secondAttribute="bottom" constant="-4" id="fBz-gj-qwy"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xiy-kx-ayC" secondAttribute="trailing" constant="-16" id="1EW-Rj-9hD"/>
+                            <constraint firstItem="xiy-kx-ayC" firstAttribute="leading" secondItem="lMr-AE-LEL" secondAttribute="leadingMargin" constant="-16" id="D5k-Lz-L6W"/>
+                            <constraint firstItem="lpH-7V-MwJ" firstAttribute="top" secondItem="xiy-kx-ayC" secondAttribute="bottom" constant="8" id="Hau-Bk-liF"/>
+                            <constraint firstItem="xiy-kx-ayC" firstAttribute="top" secondItem="AJl-YN-FMN" secondAttribute="bottom" id="KeC-kU-pW0"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lpH-7V-MwJ" secondAttribute="trailing" constant="-16" id="NWb-hS-Dxm"/>
+                            <constraint firstItem="lpH-7V-MwJ" firstAttribute="leading" secondItem="lMr-AE-LEL" secondAttribute="leadingMargin" constant="-16" id="V6O-ZK-2mW"/>
+                            <constraint firstItem="6AH-MQ-wyY" firstAttribute="top" secondItem="lpH-7V-MwJ" secondAttribute="bottom" id="WpM-Cl-C3h"/>
                             <constraint firstItem="lpH-7V-MwJ" firstAttribute="top" secondItem="xiy-kx-ayC" secondAttribute="bottom" constant="8" symbolic="YES" id="iTV-FD-6i1"/>
-                            <constraint firstItem="xiy-kx-ayC" firstAttribute="leading" secondItem="lMr-AE-LEL" secondAttribute="leadingMargin" id="zHG-Qm-rwK"/>
+                            <constraint firstItem="lpH-7V-MwJ" firstAttribute="top" secondItem="AJl-YN-FMN" secondAttribute="bottom" id="xeq-vP-3d0"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Hau-Bk-liF"/>
+                                <exclude reference="iTV-FD-6i1"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="addOptionButton" destination="jz8-bv-uhT" id="a86-1J-4DG"/>

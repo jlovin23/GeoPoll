@@ -32,6 +32,16 @@ class CreateQuestionView: UIViewController, UITableViewDelegate, UITableViewData
         customBackView.addSubview(arrowButton)
         navigationItem.hidesBackButton = true
         self.navigationController?.navigationItem.leftBarButtonItem?.customView = customBackView
+        
+        var backBtn = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        backBtn.setImage(UIImage(named: "back_arrow"), forState: UIControlState.Normal)
+        backBtn.addTarget(self, action: "popBack", forControlEvents:  UIControlEvents.TouchUpInside)
+        let realBack = UIBarButtonItem(customView: backBtn)
+        self.navigationItem.leftBarButtonItem = realBack
+        
+        let recognizer: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "popBack")
+        recognizer.direction = UISwipeGestureRecognizerDirection.Right
+        self.view.addGestureRecognizer(recognizer)
     }
 
     func popBack(){
@@ -40,15 +50,13 @@ class CreateQuestionView: UIViewController, UITableViewDelegate, UITableViewData
     
     func styleQuestionField()
     {
-        let border = CALayer()
-        let width = CGFloat(2.0)
-        border.borderColor = OurColors.ponderBlue.CGColor
-        border.frame = CGRect(x: 0, y: questionLabel.frame.size.height - width, width:  view.frame.size.width, height: questionLabel.frame.size.height)
-        border.borderWidth = width
-        
-        questionLabel.layer.addSublayer(border)
-        questionLabel.layer.masksToBounds = true
+        questionLabel.backgroundColor = OurColors.ponderBlue
+        questionLabel.textColor = UIColor.whiteColor()
+        questionLabel.tintColor = UIColor.whiteColor()
+        questionLabel.attributedPlaceholder = NSAttributedString(string:"Question",
+            attributes:[NSForegroundColorAttributeName: UIColor.lightGrayColor()])
     }
+    
     // MARK: Table view
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
