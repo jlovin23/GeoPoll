@@ -39,6 +39,12 @@ class AddQuestionPopup: UIViewController {
             }, completion: nil)
     }
     
+    func slideOutAnItem(item: UIButton){
+        UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.3, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
+            item.frame = CGRectMake(-1000, item.frame.origin.y, item.frame.size.width, item.frame.size.height)
+            }, completion: nil)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -60,8 +66,14 @@ class AddQuestionPopup: UIViewController {
     }
    
     @IBAction func dismissPressed(sender: UIButton) {
-        UIView.animateWithDuration(0.3, animations: { () -> Void in
+        UIView.animateWithDuration(0.7, animations: { () -> Void in
             self.view.alpha = 0
+            self.slideOutAnItem(self.directIcon)
+            self.slideOutAnItem(self.directLabel)
+            self.slideOutAnItem(self.localIcon)
+            self.slideOutAnItem(self.localLabel)
+            self.slideOutAnItem(self.addIcon)
+            self.slideOutAnItem(self.addLabel)
         }) { (success) -> Void in
             if success
             {

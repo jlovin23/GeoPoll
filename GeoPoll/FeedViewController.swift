@@ -33,7 +33,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         questionTableView.separatorStyle = .None
     }
     
-    @IBAction func logoutPressed(sender: UIBarButtonItem)
+    @IBAction func logoutPressed(sender: UIButton)
     {
         PFUser.logOutInBackgroundWithBlock { (error) -> Void in
             if error == nil
@@ -42,6 +42,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         }
     }
+    
     
     //get questions
     func getQuestions ()
