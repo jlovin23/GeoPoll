@@ -25,13 +25,16 @@ class CreateQuestionView: UIViewController, UITableViewDelegate, UITableViewData
         
         styleQuestionField()
         
+        self.navigationItem.title = "Create Question"
+        
         var backBtn = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         backBtn.setImage(UIImage(named: "back_arrow"), forState: UIControlState.Normal)
         backBtn.addTarget(self, action: "popBack", forControlEvents:  UIControlEvents.TouchUpInside)
         let realBack = UIBarButtonItem(customView: backBtn)
         self.navigationItem.leftBarButtonItem = realBack
         
-        let saveButton = UIBarButtonItem(title: "Save", style: UIBarButtonItemStyle.Plain, target: self, action: "saveQuestion")
+        let saveButton = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.Plain, target: self, action: "saveQuestion")
+        self.navigationItem.rightBarButtonItem = saveButton
         
         let recognizer: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "popBack")
         recognizer.direction = UISwipeGestureRecognizerDirection.Right
