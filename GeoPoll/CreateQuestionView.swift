@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class CreateQuestionView: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -43,7 +44,22 @@ class CreateQuestionView: UIViewController, UITableViewDelegate, UITableViewData
     
     func saveQuestion()
     {
-        // ADD THE PARSE TO SAVE THE QUESTION HERE
+        var addQuestion: PFObject = PFObject(className: "Question")
+        var answers: Array<String> = [String]()
+        var results: Array<Array<PFUser>> = [Array]()
+        addQuestion["question"] = questionLabel.text
+        
+        for var sec = 0; sec <= tableView.numberOfSections() - 1; sec++
+        {
+            for var row = 0; row <= tableView.numberOfRowsInSection(sec); row++
+        {
+            let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: sec)) as! OptionCell
+            
+            answers.append(cell.optionTextField.text)
+            
+            results.append([PFUser]())
+            }
+        }
     }
 
     func popBack()
