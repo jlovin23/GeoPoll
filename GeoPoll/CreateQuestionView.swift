@@ -25,26 +25,26 @@ class CreateQuestionView: UIViewController, UITableViewDelegate, UITableViewData
         
         styleQuestionField()
         
-        let customBackView = UIView(frame: CGRectMake(0, 0, 100, self.navigationController!.navigationBar.frame.size.height))
-        let arrowButton = UIButton()
-        arrowButton.setTitle("←", forState: .Normal)
-        arrowButton.addTarget(self, action: "popBack", forControlEvents: UIControlEvents.TouchUpInside)
-        customBackView.addSubview(arrowButton)
-        navigationItem.hidesBackButton = true
-        self.navigationController?.navigationItem.leftBarButtonItem?.customView = customBackView
-        
         var backBtn = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         backBtn.setImage(UIImage(named: "back_arrow"), forState: UIControlState.Normal)
         backBtn.addTarget(self, action: "popBack", forControlEvents:  UIControlEvents.TouchUpInside)
         let realBack = UIBarButtonItem(customView: backBtn)
         self.navigationItem.leftBarButtonItem = realBack
         
+        let saveButton = UIBarButtonItem(title: "Save", style: UIBarButtonItemStyle.Plain, target: self, action: "saveQuestion")
+        
         let recognizer: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "popBack")
         recognizer.direction = UISwipeGestureRecognizerDirection.Right
         self.view.addGestureRecognizer(recognizer)
     }
+    
+    func saveQuestion()
+    {
+        // ADD THE PARSE TO SAVE THE QUESTION HERE
+    }
 
-    func popBack(){
+    func popBack()
+    {
         navigationController?.popViewControllerAnimated(true)
     }
     
