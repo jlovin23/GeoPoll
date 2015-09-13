@@ -18,6 +18,8 @@ class AddQuestionPopup: UIViewController {
     @IBOutlet weak var addLabel: UIButton!
     @IBOutlet weak var downChevron: UIButton!
     
+    var shouldGoToQuestionCreate: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -52,17 +54,20 @@ class AddQuestionPopup: UIViewController {
     
     @IBAction func directPressed(sender: UIButton)
     {
-        
+        shouldGoToQuestionCreate = "Direct"
+        dismissPressed(sender)
     }
     
     @IBAction func localPressed(sender: UIButton)
     {
-        
+        shouldGoToQuestionCreate = "Local"
+        dismissPressed(sender)
     }
 
     @IBAction func addFriendPressed(sender: UIButton)
     {
-        
+        shouldGoToQuestionCreate = "Friend"
+        dismissPressed(sender)
     }
    
     @IBAction func dismissPressed(sender: UIButton) {
