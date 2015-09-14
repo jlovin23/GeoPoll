@@ -24,6 +24,7 @@ class AddQuestionPopup: UIViewController {
         super.viewDidLoad()
 
         downChevron.setTitleColor(OurColors.ponderBlue, forState: .Normal)
+        navigationController?.setNavigationBarHidden(navigationController?.navigationBarHidden == false, animated: true)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -71,6 +72,7 @@ class AddQuestionPopup: UIViewController {
     }
    
     @IBAction func dismissPressed(sender: UIButton) {
+        self.navigationController?.setNavigationBarHidden(self.navigationController?.navigationBarHidden == true, animated: true)
         UIView.animateWithDuration(0.7, animations: { () -> Void in
             self.view.alpha = 0
             self.slideOutAnItem(self.directIcon)
@@ -82,7 +84,9 @@ class AddQuestionPopup: UIViewController {
         }) { (success) -> Void in
             if success
             {
-                self.dismissViewControllerAnimated(false, completion: nil)
+                
+                self.navigationController?.popViewControllerAnimated(true)
+                
             }
         }
     }

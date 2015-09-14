@@ -14,6 +14,8 @@ class CreateQuestionView: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addOptionButton: UIButton!
     @IBOutlet weak var questionLabel: UITextField!
+    @IBOutlet weak var cancelButton: UIButton!
+    @IBOutlet weak var checkButton: UIButton!
     
     var numberOfOptions = 2
     
@@ -40,6 +42,13 @@ class CreateQuestionView: UIViewController, UITableViewDelegate, UITableViewData
         let recognizer: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "popBack")
         recognizer.direction = UISwipeGestureRecognizerDirection.Right
         self.view.addGestureRecognizer(recognizer)
+        
+        cancelButton.backgroundColor = OurColors.ponderBlue
+        cancelButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        
+        checkButton.backgroundColor = OurColors.ponderBlue
+        checkButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        
     }
     
     func saveQuestion()
@@ -104,11 +113,18 @@ class CreateQuestionView: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
-    
     @IBAction func addOption(sender: UIButton)
     {
         numberOfOptions++
         tableView.reloadData() 
     }
 
+    @IBAction func cancelPressed(sender: UIButton)
+    {
+    }
+    
+    @IBAction func confirmPressed(sender: UIButton)
+    {
+    }
+    
 }

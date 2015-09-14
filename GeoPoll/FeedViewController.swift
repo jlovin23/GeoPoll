@@ -43,11 +43,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         Material.makeActionButton(addFriendFab, bgColor: OurColors.easterYellow)
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        
-    }
     
     @IBAction func logoutPressed(sender: UIButton)
     {
