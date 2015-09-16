@@ -21,4 +21,15 @@ class Material
         button.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         button.opaque = true
     }
+    
+    static func createBottomBorderForTextfield(field: UITextField){
+        let border = CALayer()
+        let width = CGFloat(2.0)
+        border.borderColor = OurColors.ponderBlue.CGColor
+        border.frame = CGRect(x: 0, y: field.frame.size.height - width, width:  field.frame.size.width, height: field.frame.size.height)
+        border.borderWidth = width
+        
+        field.layer.addSublayer(border)
+        field.layer.masksToBounds = true
+    }
 }

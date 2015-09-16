@@ -11,10 +11,6 @@ import Parse
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var questionTableView: UITableView!
-    @IBOutlet weak var createFab: UIButton!
-    @IBOutlet weak var directFab: UIButton!
-    @IBOutlet weak var localFab: UIButton!
-    @IBOutlet weak var addFriendFab: UIButton!
     
     var popupDrawerIsShowing = false
     enum QuestionTypes
@@ -25,7 +21,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     var questionType: QuestionTypes?
     var questions: Array<PFObject>!
     let fakeData = ["this", "thaat"]
-    var showingFabs = false
 
     override func viewDidLoad()
     {
@@ -36,11 +31,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         
         questionTableView.separatorStyle = .None
-        
-        Material.makeActionButton(createFab, bgColor: OurColors.ponderBlue)
-        Material.makeActionButton(directFab, bgColor: OurColors.easterGreen)
-        Material.makeActionButton(localFab, bgColor: OurColors.easterPurple)
-        Material.makeActionButton(addFriendFab, bgColor: OurColors.easterYellow)
     }
     
     
@@ -121,28 +111,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         performSegueWithIdentifier("showAddMenu", sender: self)
     }
     
-    @IBAction func createFabPressed(sender: UIButton)
-    {
-        if showingFabs
-        {
-            UIView.animateWithDuration(0.4, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.3, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
-                self.directFab.frame = CGRectMake(self.createFab.frame.origin.x, self.directFab.frame.origin.y, self.directFab.frame.size.width, self.directFab.frame.size.height)
-                self.localFab.frame = CGRectMake(self.createFab.frame.origin.x, self.localFab.frame.origin.y, self.localFab.frame.size.width, self.localFab.frame.size.height)
-                self.addFriendFab.frame = CGRectMake(self.createFab.frame.origin.x, self.addFriendFab.frame.origin.y, self.addFriendFab.frame.size.width, self.addFriendFab.frame.size.height)
-                }, completion: nil)
-            showingFabs = false
-        }
-        else
-        {
-            UIView.animateWithDuration(0.4, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.3, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
-                self.directFab.frame = CGRectMake(self.directFab.frame.origin.x - self.directFab.frame.size.width - 10, self.directFab.frame.origin.y, self.directFab.frame.size.width, self.directFab.frame.size.height)
-                self.localFab.frame = CGRectMake(self.localFab.frame.origin.x - self.localFab.frame.size.width * 2 - 20, self.localFab.frame.origin.y, self.localFab.frame.size.width, self.localFab.frame.size.height)
-                self.addFriendFab.frame = CGRectMake(self.addFriendFab.frame.origin.x - self.addFriendFab.frame.size.width*3 - 30, self.addFriendFab.frame.origin.y, self.addFriendFab.frame.size.width, self.addFriendFab.frame.size.height)
-                }, completion: nil)
-            showingFabs = true
-        }
-    }
-    
     @IBAction func directOrLocalPressed(sender: UIButton)
     {
         performSegueWithIdentifier("goToQuestionCreation", sender: self)
@@ -150,6 +118,9 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBAction func addFriendPressed(sender: UIButton)
     {
+    }
+    
+    @IBAction func unwindToVC(segue: UIStoryboardSegue) {
     }
     
 }

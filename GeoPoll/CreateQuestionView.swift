@@ -28,21 +28,6 @@ class CreateQuestionView: UIViewController, UITableViewDelegate, UITableViewData
         
         styleQuestionField()
         
-        self.navigationItem.title = "Create Question"
-        
-        var backBtn = UIButton(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-        backBtn.setImage(UIImage(named: "back_arrow"), forState: UIControlState.Normal)
-        backBtn.addTarget(self, action: "popBack", forControlEvents:  UIControlEvents.TouchUpInside)
-        let realBack = UIBarButtonItem(customView: backBtn)
-        self.navigationItem.leftBarButtonItem = realBack
-        
-        let saveButton = UIBarButtonItem(title: "Next", style: UIBarButtonItemStyle.Plain, target: self, action: "saveQuestion")
-        self.navigationItem.rightBarButtonItem = saveButton
-        
-        let recognizer: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "popBack")
-        recognizer.direction = UISwipeGestureRecognizerDirection.Right
-        self.view.addGestureRecognizer(recognizer)
-        
         cancelButton.backgroundColor = OurColors.ponderBlue
         cancelButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         
@@ -70,11 +55,6 @@ class CreateQuestionView: UIViewController, UITableViewDelegate, UITableViewData
             }
         }
     }
-
-    func popBack()
-    {
-        navigationController?.popViewControllerAnimated(true)
-    }
     
     func styleQuestionField()
     {
@@ -82,7 +62,7 @@ class CreateQuestionView: UIViewController, UITableViewDelegate, UITableViewData
         questionLabel.textColor = UIColor.whiteColor()
         questionLabel.tintColor = UIColor.whiteColor()
         questionLabel.attributedPlaceholder = NSAttributedString(string:"Question",
-            attributes:[NSForegroundColorAttributeName: UIColor.lightGrayColor()])
+            attributes:[NSForegroundColorAttributeName: OurColors.ultraLightGray])
     }
     
     // MARK: Table view
@@ -103,9 +83,7 @@ class CreateQuestionView: UIViewController, UITableViewDelegate, UITableViewData
         
         cell.optionTextField.placeholder = "Option \(indexPath.row + 1)"
         cell.selectionStyle = .None
-        cell.optionTextField.layer.cornerRadius = 4.0
-        cell.optionTextField.layer.borderColor = OurColors.ponderBlue.CGColor
-        cell.optionTextField.layer.borderWidth = 2
+        Material.createBottomBorderForTextfield(cell.optionTextField)
         cell.questionNumberField.text = "\(indexPath.row + 1)"
         cell.questionNumberField.textColor = OurColors.ponderBlue
         
@@ -121,6 +99,8 @@ class CreateQuestionView: UIViewController, UITableViewDelegate, UITableViewData
 
     @IBAction func cancelPressed(sender: UIButton)
     {
+        //performSegueWithIdentifier("dismissQuestionCreate", sender: self)
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func confirmPressed(sender: UIButton)
