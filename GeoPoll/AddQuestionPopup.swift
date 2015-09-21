@@ -36,15 +36,29 @@ class AddQuestionPopup: UIViewController {
         slideInAnItem(addLabel, delayTime: 0.3)
     }
     
+    override func viewDidLayoutSubviews() {
+        setItemOffscreen(directIcon)
+        setItemOffscreen(directLabel)
+        setItemOffscreen(localIcon)
+        setItemOffscreen(localLabel)
+        setItemOffscreen(addIcon)
+        setItemOffscreen(addLabel)
+    }
+    
     func slideInAnItem(item: UIButton, delayTime: Double){
         UIView.animateWithDuration(0.3, delay: delayTime, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.3, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
             item.frame = CGRectMake(self.view.frame.size.width/2-item.frame.size.width/2, item.frame.origin.y, item.frame.size.width, item.frame.size.height)
             }, completion: nil)
     }
     
+    func setItemOffscreen(item: UIButton)
+    {
+        item.frame = CGRectMake(self.view.frame.size.width + item.frame.size.width, item.frame.origin.y, item.frame.size.width, item.frame.size.height)
+    }
+    
     func slideOutAnItem(item: UIButton){
         UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.3, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
-            item.frame = CGRectMake(-1000, item.frame.origin.y, item.frame.size.width, item.frame.size.height)
+            item.frame = CGRectMake(self.view.frame.size.width + item.frame.size.width, item.frame.origin.y, item.frame.size.width, item.frame.size.height)
             }, completion: nil)
     }
     

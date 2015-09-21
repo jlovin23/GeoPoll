@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		8F2777B91BA1C0920036F21E /* OptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2777B81BA1C0920036F21E /* OptionCell.swift */; };
+		8F505D991BB088BE002F0A07 /* AccountPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F505D981BB088BE002F0A07 /* AccountPopupViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		8F505D9B1BB08AAC002F0A07 /* FriendRequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F505D9A1BB08AAC002F0A07 /* FriendRequestsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		8F53DA691B9C9B9400808773 /* OurColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F53DA681B9C9B9400808773 /* OurColors.swift */; };
 		8F54C6B01BA2750A000AF5B7 /* AddQuestionPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F54C6AF1BA2750A000AF5B7 /* AddQuestionPopup.swift */; };
 		8F6AF2341B9C8559002FF16B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F6AF2331B9C8559002FF16B /* AudioToolbox.framework */; };
@@ -36,6 +38,8 @@
 
 /* Begin PBXFileReference section */
 		8F2777B81BA1C0920036F21E /* OptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionCell.swift; sourceTree = "<group>"; };
+		8F505D981BB088BE002F0A07 /* AccountPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountPopupViewController.swift; sourceTree = "<group>"; };
+		8F505D9A1BB08AAC002F0A07 /* FriendRequestsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendRequestsViewController.swift; sourceTree = "<group>"; };
 		8F53DA681B9C9B9400808773 /* OurColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OurColors.swift; sourceTree = "<group>"; };
 		8F54C6AF1BA2750A000AF5B7 /* AddQuestionPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddQuestionPopup.swift; sourceTree = "<group>"; };
 		8F6AF2331B9C8559002FF16B /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -130,6 +134,8 @@
 			isa = PBXGroup;
 			children = (
 				8FB894F11B9BDF0400E93208 /* Main.storyboard */,
+				8F505D9A1BB08AAC002F0A07 /* FriendRequestsViewController.swift */,
+				8F505D981BB088BE002F0A07 /* AccountPopupViewController.swift */,
 				8FDE17FC1BA9BED700855B44 /* AddFriendView.swift */,
 				8FA17C451BA4D041001C91D7 /* Material.swift */,
 				8F54C6AF1BA2750A000AF5B7 /* AddQuestionPopup.swift */,
@@ -244,8 +250,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8FB894F01B9BDF0400E93208 /* SignInViewController.swift in Sources */,
+				8F505D991BB088BE002F0A07 /* AccountPopupViewController.swift in Sources */,
 				8FA17C461BA4D041001C91D7 /* Material.swift in Sources */,
 				8F6AF24C1B9C8EB8002FF16B /* FeedViewController.swift in Sources */,
+				8F505D9B1BB08AAC002F0A07 /* FriendRequestsViewController.swift in Sources */,
 				8F2777B91BA1C0920036F21E /* OptionCell.swift in Sources */,
 				8F9415351BA864540081F91A /* CreateQuestionView.swift in Sources */,
 				8F53DA691B9C9B9400808773 /* OurColors.swift in Sources */,

@@ -11,7 +11,6 @@ import Parse
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var questionTableView: UITableView!
-    @IBOutlet weak var addButton: UIButton!
     var popupDrawerIsShowing = false
     var questions: Array<PFObject>!
     let fakeData = ["this", "thaat"]
@@ -25,8 +24,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         
         questionTableView.separatorStyle = .None
-        
-        addButton.backgroundColor = OurColors.ponderBlue
     }
     
     
@@ -119,7 +116,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func unwindToVC(segue: UIStoryboardSegue) {
     }
     
-    @IBAction func addPressed(sender: UIButton)
+    @IBAction func addPressed(sender: UIBarButtonItem)
     {
         performSegueWithIdentifier("showAddMenu", sender: self)
     }
