@@ -19,6 +19,7 @@ class AddQuestionPopup: UIViewController {
     @IBOutlet weak var downChevron: UIButton!
     
     var shouldGoToQuestionCreate: String!
+    var questionType: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,11 +55,13 @@ class AddQuestionPopup: UIViewController {
     
     @IBAction func directPressed(sender: UIButton)
     {
+        questionType = "direct"
         performSegueWithIdentifier("goToCreate", sender: self)
     }
     
     @IBAction func localPressed(sender: UIButton)
     {
+        questionType = "local"
         performSegueWithIdentifier("goToCreate", sender: self)
     }
 
@@ -81,6 +84,19 @@ class AddQuestionPopup: UIViewController {
             {
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "goToCreate"
+        {
+            let destination = segue.destinationViewController as! CreateQuestionView
+            
+            if let quest = questionType
+            {
+                destination.questionType = quest
+            }
+            
         }
     }
 }

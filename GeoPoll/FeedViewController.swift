@@ -11,14 +11,8 @@ import Parse
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var questionTableView: UITableView!
-    
+    @IBOutlet weak var addButton: UIButton!
     var popupDrawerIsShowing = false
-    enum QuestionTypes
-    {
-        case Direct
-        case Local
-    }
-    var questionType: QuestionTypes?
     var questions: Array<PFObject>!
     let fakeData = ["this", "thaat"]
 
@@ -31,6 +25,8 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         
         questionTableView.separatorStyle = .None
+        
+        addButton.backgroundColor = OurColors.ponderBlue
     }
     
     
@@ -108,7 +104,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBAction func showAddQuestionPopup(sender: UIButton)
     {
-        performSegueWithIdentifier("showAddMenu", sender: self)
+        //performSegueWithIdentifier("showAddMenu", sender: self)
     }
     
     @IBAction func directOrLocalPressed(sender: UIButton)
@@ -121,6 +117,11 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     @IBAction func unwindToVC(segue: UIStoryboardSegue) {
+    }
+    
+    @IBAction func addPressed(sender: UIButton)
+    {
+        performSegueWithIdentifier("showAddMenu", sender: self)
     }
     
 }

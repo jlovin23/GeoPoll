@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8F2777B71BA1BE610036F21E /* CreateQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2777B61BA1BE610036F21E /* CreateQuestionView.swift */; };
 		8F2777B91BA1C0920036F21E /* OptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2777B81BA1C0920036F21E /* OptionCell.swift */; };
 		8F53DA691B9C9B9400808773 /* OurColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F53DA681B9C9B9400808773 /* OurColors.swift */; };
 		8F54C6B01BA2750A000AF5B7 /* AddQuestionPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F54C6AF1BA2750A000AF5B7 /* AddQuestionPopup.swift */; };
@@ -24,28 +23,18 @@
 		8F6AF2481B9C85B2002FF16B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F6AF2471B9C85B2002FF16B /* libz.dylib */; };
 		8F6AF24A1B9C85BC002FF16B /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F6AF2491B9C85BC002FF16B /* libsqlite3.dylib */; };
 		8F6AF24C1B9C8EB8002FF16B /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6AF24B1B9C8EB8002FF16B /* FeedViewController.swift */; };
+		8F9415351BA864540081F91A /* CreateQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9415341BA864540081F91A /* CreateQuestionView.swift */; };
 		8FA17C461BA4D041001C91D7 /* Material.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA17C451BA4D041001C91D7 /* Material.swift */; };
 		8FB894EE1B9BDF0400E93208 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB894ED1B9BDF0400E93208 /* AppDelegate.swift */; };
 		8FB894F01B9BDF0400E93208 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB894EF1B9BDF0400E93208 /* SignInViewController.swift */; };
 		8FB894F31B9BDF0400E93208 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FB894F11B9BDF0400E93208 /* Main.storyboard */; };
 		8FB894F51B9BDF0400E93208 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8FB894F41B9BDF0400E93208 /* Images.xcassets */; };
 		8FB894F81B9BDF0400E93208 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8FB894F61B9BDF0400E93208 /* LaunchScreen.xib */; };
-		8FB895041B9BDF0400E93208 /* GeoPollTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB895031B9BDF0400E93208 /* GeoPollTests.swift */; };
 		8FC66A011BA0FE9E00799AB4 /* QuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC66A001BA0FE9E00799AB4 /* QuestionCell.swift */; };
+		8FDE17FD1BA9BED700855B44 /* AddFriendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDE17FC1BA9BED700855B44 /* AddFriendView.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		8FB894FE1B9BDF0400E93208 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8FB894E01B9BDF0300E93208 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8FB894E71B9BDF0300E93208;
-			remoteInfo = GeoPoll;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		8F2777B61BA1BE610036F21E /* CreateQuestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateQuestionView.swift; sourceTree = "<group>"; };
 		8F2777B81BA1C0920036F21E /* OptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionCell.swift; sourceTree = "<group>"; };
 		8F53DA681B9C9B9400808773 /* OurColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OurColors.swift; sourceTree = "<group>"; };
 		8F54C6AF1BA2750A000AF5B7 /* AddQuestionPopup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddQuestionPopup.swift; sourceTree = "<group>"; };
@@ -62,6 +51,7 @@
 		8F6AF2471B9C85B2002FF16B /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		8F6AF2491B9C85BC002FF16B /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		8F6AF24B1B9C8EB8002FF16B /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		8F9415341BA864540081F91A /* CreateQuestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateQuestionView.swift; sourceTree = "<group>"; };
 		8FA17C451BA4D041001C91D7 /* Material.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Material.swift; sourceTree = "<group>"; };
 		8FB894E81B9BDF0400E93208 /* GeoPoll.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoPoll.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FB894EC1B9BDF0400E93208 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -70,10 +60,10 @@
 		8FB894F21B9BDF0400E93208 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8FB894F41B9BDF0400E93208 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		8FB894F71B9BDF0400E93208 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		8FB894FD1B9BDF0400E93208 /* GeoPollTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeoPollTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FB895021B9BDF0400E93208 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8FB895031B9BDF0400E93208 /* GeoPollTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoPollTests.swift; sourceTree = "<group>"; };
 		8FC66A001BA0FE9E00799AB4 /* QuestionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionCell.swift; sourceTree = "<group>"; };
+		8FDE17FC1BA9BED700855B44 /* AddFriendView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,13 +83,6 @@
 				8F6AF2341B9C8559002FF16B /* AudioToolbox.framework in Frameworks */,
 				8F6AF2381B9C8571002FF16B /* Parse.framework in Frameworks */,
 				8F6AF2371B9C8571002FF16B /* Bolts.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8FB894FA1B9BDF0400E93208 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,7 +122,6 @@
 			isa = PBXGroup;
 			children = (
 				8FB894E81B9BDF0400E93208 /* GeoPoll.app */,
-				8FB894FD1B9BDF0400E93208 /* GeoPollTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -148,11 +130,12 @@
 			isa = PBXGroup;
 			children = (
 				8FB894F11B9BDF0400E93208 /* Main.storyboard */,
+				8FDE17FC1BA9BED700855B44 /* AddFriendView.swift */,
 				8FA17C451BA4D041001C91D7 /* Material.swift */,
 				8F54C6AF1BA2750A000AF5B7 /* AddQuestionPopup.swift */,
 				8FB894EF1B9BDF0400E93208 /* SignInViewController.swift */,
 				8F6AF24B1B9C8EB8002FF16B /* FeedViewController.swift */,
-				8F2777B61BA1BE610036F21E /* CreateQuestionView.swift */,
+				8F9415341BA864540081F91A /* CreateQuestionView.swift */,
 				8FB894F41B9BDF0400E93208 /* Images.xcassets */,
 				8F2777B81BA1C0920036F21E /* OptionCell.swift */,
 				8FC66A001BA0FE9E00799AB4 /* QuestionCell.swift */,
@@ -209,39 +192,18 @@
 			productReference = 8FB894E81B9BDF0400E93208 /* GeoPoll.app */;
 			productType = "com.apple.product-type.application";
 		};
-		8FB894FC1B9BDF0400E93208 /* GeoPollTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 8FB8950A1B9BDF0400E93208 /* Build configuration list for PBXNativeTarget "GeoPollTests" */;
-			buildPhases = (
-				8FB894F91B9BDF0400E93208 /* Sources */,
-				8FB894FA1B9BDF0400E93208 /* Frameworks */,
-				8FB894FB1B9BDF0400E93208 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				8FB894FF1B9BDF0400E93208 /* PBXTargetDependency */,
-			);
-			name = GeoPollTests;
-			productName = GeoPollTests;
-			productReference = 8FB894FD1B9BDF0400E93208 /* GeoPollTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		8FB894E01B9BDF0300E93208 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Joseph Lovinger";
 				TargetAttributes = {
 					8FB894E71B9BDF0300E93208 = {
 						CreatedOnToolsVersion = 6.4;
-					};
-					8FB894FC1B9BDF0400E93208 = {
-						CreatedOnToolsVersion = 6.4;
-						TestTargetID = 8FB894E71B9BDF0300E93208;
 					};
 				};
 			};
@@ -259,7 +221,6 @@
 			projectRoot = "";
 			targets = (
 				8FB894E71B9BDF0300E93208 /* GeoPoll */,
-				8FB894FC1B9BDF0400E93208 /* GeoPollTests */,
 			);
 		};
 /* End PBXProject section */
@@ -275,13 +236,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8FB894FB1B9BDF0400E93208 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -293,31 +247,16 @@
 				8FA17C461BA4D041001C91D7 /* Material.swift in Sources */,
 				8F6AF24C1B9C8EB8002FF16B /* FeedViewController.swift in Sources */,
 				8F2777B91BA1C0920036F21E /* OptionCell.swift in Sources */,
+				8F9415351BA864540081F91A /* CreateQuestionView.swift in Sources */,
 				8F53DA691B9C9B9400808773 /* OurColors.swift in Sources */,
 				8FB894EE1B9BDF0400E93208 /* AppDelegate.swift in Sources */,
-				8F2777B71BA1BE610036F21E /* CreateQuestionView.swift in Sources */,
 				8F54C6B01BA2750A000AF5B7 /* AddQuestionPopup.swift in Sources */,
+				8FDE17FD1BA9BED700855B44 /* AddFriendView.swift in Sources */,
 				8FC66A011BA0FE9E00799AB4 /* QuestionCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8FB894F91B9BDF0400E93208 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8FB895041B9BDF0400E93208 /* GeoPollTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		8FB894FF1B9BDF0400E93208 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8FB894E71B9BDF0300E93208 /* GeoPoll */;
-			targetProxy = 8FB894FE1B9BDF0400E93208 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		8FB894F11B9BDF0400E93208 /* Main.storyboard */ = {
@@ -360,6 +299,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -426,12 +366,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = GeoPoll/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.JosephLovinger.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -440,47 +382,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = GeoPoll/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.JosephLovinger.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		8FB8950B1B9BDF0400E93208 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = GeoPollTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GeoPoll.app/GeoPoll";
-			};
-			name = Debug;
-		};
-		8FB8950C1B9BDF0400E93208 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = GeoPollTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GeoPoll.app/GeoPoll";
 			};
 			name = Release;
 		};
@@ -501,15 +411,6 @@
 			buildConfigurations = (
 				8FB895081B9BDF0400E93208 /* Debug */,
 				8FB895091B9BDF0400E93208 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		8FB8950A1B9BDF0400E93208 /* Build configuration list for PBXNativeTarget "GeoPollTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8FB8950B1B9BDF0400E93208 /* Debug */,
-				8FB8950C1B9BDF0400E93208 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

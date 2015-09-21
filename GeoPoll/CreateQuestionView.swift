@@ -8,16 +8,21 @@
 
 import UIKit
 import Parse
+import CoreLocation
 
-class CreateQuestionView: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class CreateQuestionView: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addOptionButton: UIButton!
     @IBOutlet weak var questionLabel: UITextField!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var checkButton: UIButton!
+    let locationManager = CLLocationManager()
+    var currentGeo: PFGeoPoint!
     
     var numberOfOptions = 2
+    var questionType: String!
+    var addQuestion: PFObject!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,22 +41,65 @@ class CreateQuestionView: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
-    func saveQuestion()
+    func setLocation ()
     {
-        var addQuestion: PFObject = PFObject(className: "Question")
+        self.locationManager.delegate = self
+        
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        
+        self.locationManager.requestWhenInUseAuthorization()
+        
+        self.locationManager.startUpdatingLocation()
+        
+        self.currentGeo = PFGeoPoint(location: locationManager.location)
+        
+        self.locationManager.stopUpdatingLocation()
+    }
+    
+    @IBAction func saveQuestion(sender: UIButton)
+    {
+        addQuestion = PFObject(className: "Question")
         var answers: Array<String> = [String]()
         var results: Array<Array<PFUser>> = [Array]()
         addQuestion["question"] = questionLabel.text
         
-        for var sec = 0; sec <= tableView.numberOfSections() - 1; sec++
+        if questionType == "local"
         {
-            for var row = 0; row <= tableView.numberOfRowsInSection(sec); row++
+            self.setLocation()
+            
+            addQuestion["local"] = true
+            
+            addQuestion["location"] = currentGeo
+            
+        }
+        else
         {
-            let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: sec)) as! OptionCell
+            addQuestion["local"] = false
+        }
+        
+        for var sec = 0; sec <= tableView.numberOfSections - 1; sec++
+        {
+            for var row = 0; row <= tableView.numberOfRowsInSection(sec) - 1; row++
+            {
+                let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: sec)) as! OptionCell
             
-            answers.append(cell.optionTextField.text)
+                answers.append(cell.optionTextField.text!)
             
-            results.append([PFUser]())
+                results.append([PFUser]())
+            }
+        }
+        
+        addQuestion["answers"] = answers
+        addQuestion["results"] = results
+        
+        addQuestion.saveInBackgroundWithBlock { (success, error) -> Void in
+            if error != nil
+            {
+                print("noooo")
+            }
+            else
+            {
+                print("yaaaaa")
             }
         }
     }

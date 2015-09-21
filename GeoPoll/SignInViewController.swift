@@ -17,7 +17,8 @@ class SignInViewController: UIViewController
     @IBOutlet weak var signinButton: UIButton!
     @IBOutlet weak var signupButton: UIButton!
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         
         signinButton.backgroundColor = OurColors.ponderBlue
@@ -27,16 +28,20 @@ class SignInViewController: UIViewController
         signupButton.layer.cornerRadius = 4.0
     }
     
-    override func viewDidLayoutSubviews() {
+    override func viewDidLayoutSubviews()
+    {
         createBottomBorderForTextfield(usernameField)
         createBottomBorderForTextfield(passwordField)
     }
     
-    override func viewDidAppear(animated: Bool) {
-        var currentUser = PFUser.currentUser()
-        if currentUser != nil {
+    override func viewDidAppear(animated: Bool)
+    {
+        let currentUser = PFUser.currentUser()
+        if currentUser != nil
+        {
             self.performSegueWithIdentifier("signInSuccess", sender: self)
-        } else {
+        } else
+        {
             print(currentUser?.description)
         }
     }
@@ -53,7 +58,7 @@ class SignInViewController: UIViewController
     }
     
     @IBAction func signinPressed(sender: UIButton) {
-        PFUser.logInWithUsernameInBackground(usernameField.text, password: passwordField.text) { (success, error) -> Void in
+        PFUser.logInWithUsernameInBackground(usernameField.text!, password: passwordField.text!) { (success, error) -> Void in
             if error != nil {
                 let alert = UIAlertController(title: "User does not exist", message: "No such user exists. You could try signing up.", preferredStyle: .Alert)
                 let okButton = UIAlertAction(title: "Ok", style: .Default, handler: nil)
@@ -65,18 +70,40 @@ class SignInViewController: UIViewController
         }
     }
     
-    @IBAction func signupPressed(sender: UIButton) {
-        if usernameField.text != "" && passwordField.text != "" {
+    @IBAction func signupPressed(sender: UIButton)
+    {
+        if usernameField.text != "" && passwordField.text != ""
+        {
             let user = PFUser()
+            
+            let userData: PFObject = PFObject(className: "UserData")
+            
             user.username = usernameField.text
             user.password = passwordField.text
+            
+            user["userData"] = userData
+            
             user.signUpInBackgroundWithBlock({ (succeeded, error) -> Void in
-                if error != nil {
+                if error != nil
+                {
                     let alert = UIAlertController(title: "Invalid username", message: "A user with that username already exists. Please try another.", preferredStyle: .Alert)
                     let okButton = UIAlertAction(title: "Ok", style: .Default, handler: nil)
                     alert.addAction(okButton)
                     self.presentViewController(alert, animated: true, completion: nil)
-                } else {
+                } else
+                {
+                    
+                    
+                    userData["answeredQuestions"] = [PFObject]()
+                    userData["askedQuestions"] = [PFObject] ()
+                    userData["groups"] = [PFObject]()
+                    userData["friends"] = [PFUser]()
+                    userData["requests"] = [PFUser]()
+                    
+                    userData.saveInBackground()
+                    
+                    user["userData"] = userData
+                    
                     self.performSegueWithIdentifier("signInSuccess", sender: self)
                 }
             })
