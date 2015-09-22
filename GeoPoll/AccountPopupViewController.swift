@@ -23,7 +23,7 @@ class AccountPopupViewController: UIViewController {
     
     @IBAction func seeFriendRequestsCicked(sender: UIButton)
     {
-        performSegueWithIdentifier("seeRequests", sender: self)
+        performSegueWithIdentifier("showRequests", sender: self)
     }
     
 
