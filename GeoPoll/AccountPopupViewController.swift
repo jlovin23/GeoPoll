@@ -15,16 +15,15 @@ class AccountPopupViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     @IBAction func seeFriendRequestsCicked(sender: UIButton)
     {
         performSegueWithIdentifier("showRequests", sender: self)
     }
     
+    @IBAction func dismissView(sender: UIButton)
+    {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
 
 }

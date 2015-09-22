@@ -109,11 +109,10 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         performSegueWithIdentifier("goToQuestionCreation", sender: self)
     }
     
-    @IBAction func addFriendPressed(sender: UIButton)
-    {
-    }
     
-    @IBAction func unwindToVC(segue: UIStoryboardSegue) {
+    @IBAction func accountMenuPressed(sender: UIButton)
+    {
+        performSegueWithIdentifier("showAccountPopup", sender: self)
     }
     
     @IBAction func addPressed(sender: UIBarButtonItem)

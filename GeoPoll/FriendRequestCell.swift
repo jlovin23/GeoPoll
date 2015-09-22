@@ -10,15 +10,15 @@ import UIKit
 
 class FriendRequestCell: UITableViewCell {
 
-    @IBOutlet weak var namelLabel: UILabel!
+
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var deny: UIButton!
     @IBOutlet weak var approve: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        deny.setTitleColor(OurColors.easterRed, forState: .Normal)
-        approve.setTitleColor(OurColors.ponderGreen, forState: .Normal)
+        approve.backgroundColor = OurColors.ponderGreen
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

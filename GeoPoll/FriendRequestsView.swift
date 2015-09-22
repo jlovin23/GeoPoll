@@ -23,6 +23,7 @@ class FriendRequestsView: UIViewController, UITableViewDataSource, UITableViewDe
         pending = userData["requests"] as! Array<PFUser>
         
         navBar.backgroundColor = OurColors.ponderBlue
+        print(pending.count)
     }
 
     // MARK: Table View
@@ -41,8 +42,20 @@ class FriendRequestsView: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! FriendRequestCell
         pending[indexPath.row].fetchIfNeeded()
         
-        cell.namelLabel.text = pending[indexPath.row].username
+        cell.nameLabel.text = pending[indexPath.row].username
         
         return cell
+    }
+    
+    @IBAction func rejectPressed(sender: UIButton)
+    {
+        let userData: PFObject = PFUser.currentUser()!.objectForKey("userData") as! PFObject
+        userData.fetchIfNeeded()
+        
+        //userData[""]
+    }
+    
+    @IBAction func acceptPressed(sender: UIButton)
+    {
     }
 }
