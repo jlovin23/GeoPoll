@@ -7,12 +7,21 @@
 //
 
 import UIKit
+import Parse
 
-class FriendRequestsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class FriendRequestsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
+{
+    
+    var pending: Array<PFUser>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let userData: PFObject = PFUser.currentUser()!.objectForKey("userData") as! PFObject
+        
+        userData.fetchIfNeeded()
+        
+        pending = userData["requests"] as! Array<PFUser>
         // Do any additional setup after loading the view.
     }
 
@@ -25,7 +34,7 @@ class FriendRequestsViewController: UIViewController, UITableViewDelegate, UITab
     // MARK: Table View
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return pending.count
         
     }
     
@@ -35,6 +44,8 @@ class FriendRequestsViewController: UIViewController, UITableViewDelegate, UITab
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as UITableViewCell
+        
+        
         
         return cell
         
