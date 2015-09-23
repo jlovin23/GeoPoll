@@ -49,10 +49,7 @@ class FriendRequestsView: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBAction func rejectPressed(sender: UIButton)
     {
-        let userData: PFObject = PFUser.currentUser()!.objectForKey("userData") as! PFObject
-        userData.fetchIfNeeded()
-        
-        //userData[""]
+
     }
     
     @IBAction func acceptPressed(sender: UIButton)

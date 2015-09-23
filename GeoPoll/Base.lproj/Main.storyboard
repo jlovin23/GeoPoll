@@ -452,51 +452,49 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KCX-jf-SGK">
-                                                    <rect key="frame" x="557" y="0.0" width="43" height="44"/>
-                                                    <color key="backgroundColor" red="1" green="0.42862341529999998" blue="0.392358031" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="KCX-jf-SGK" secondAttribute="height" multiplier="43:44" id="cJO-Oh-KS9"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="31"/>
-                                                    <state key="normal" title="×">
-                                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="rejectPressed:" destination="jMZ-ah-QPP" eventType="touchUpInside" id="10Y-U4-SNo"/>
-                                                    </connections>
-                                                </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kVm-L9-BxG">
-                                                    <rect key="frame" x="515" y="-3" width="43" height="47"/>
-                                                    <color key="backgroundColor" red="0.45037969719999998" green="1" blue="0.44123424649999998" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <rect key="frame" x="506" y="-1" width="43" height="44"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="kVm-L9-BxG" secondAttribute="height" multiplier="43:47" id="lTW-hQ-Oag"/>
+                                                        <constraint firstAttribute="width" secondItem="kVm-L9-BxG" secondAttribute="height" multiplier="1:1" constant="-1" id="gFI-D4-n8R"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="31"/>
                                                     <state key="normal" title="✓">
-                                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="titleColor" red="0.45037969719999998" green="1" blue="0.44123424649999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="acceptPressed:" destination="jMZ-ah-QPP" eventType="touchUpInside" id="DqO-nK-o2u"/>
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="op8-h1-9Eh">
-                                                    <rect key="frame" x="279" y="11" width="42" height="21"/>
+                                                    <rect key="frame" x="16" y="11" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KCX-jf-SGK">
+                                                    <rect key="frame" x="557" y="-1" width="43" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="KCX-jf-SGK" secondAttribute="height" multiplier="1:1" constant="-1" id="hsl-F1-Go0"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                                    <state key="normal" title="×">
+                                                        <color key="titleColor" red="1" green="0.42862341529999998" blue="0.392358031" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="rejectPressed:" destination="jMZ-ah-QPP" eventType="touchUpInside" id="10Y-U4-SNo"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="KCX-jf-SGK" secondAttribute="bottom" constant="-8" id="JVa-VQ-kgM"/>
-                                                <constraint firstItem="KCX-jf-SGK" firstAttribute="top" secondItem="ONH-td-5jD" secondAttribute="topMargin" constant="-8" id="Ncj-Ao-DqB"/>
-                                                <constraint firstItem="KCX-jf-SGK" firstAttribute="leading" secondItem="op8-h1-9Eh" secondAttribute="trailing" constant="236" id="OiN-GK-pKS"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="kVm-L9-BxG" secondAttribute="bottom" constant="-8" id="Phf-7s-v7Y"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="kVm-L9-BxG" secondAttribute="trailing" constant="34" id="Zlr-Y2-qhk"/>
-                                                <constraint firstItem="kVm-L9-BxG" firstAttribute="top" secondItem="ONH-td-5jD" secondAttribute="topMargin" constant="-11" id="lFo-Fc-R7a"/>
-                                                <constraint firstItem="op8-h1-9Eh" firstAttribute="top" secondItem="ONH-td-5jD" secondAttribute="topMargin" constant="3" id="m7n-nE-qYE"/>
-                                                <constraint firstItem="op8-h1-9Eh" firstAttribute="centerY" secondItem="KCX-jf-SGK" secondAttribute="centerY" id="ypw-qV-r1I"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="KCX-jf-SGK" secondAttribute="trailing" constant="-8" id="ysY-9q-60u"/>
+                                                <constraint firstItem="KCX-jf-SGK" firstAttribute="top" secondItem="ONH-td-5jD" secondAttribute="topMargin" constant="-9" id="JJC-wF-IZj"/>
+                                                <constraint firstItem="op8-h1-9Eh" firstAttribute="top" secondItem="ONH-td-5jD" secondAttribute="topMargin" constant="3" id="RbB-Al-9Qo"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="kVm-L9-BxG" secondAttribute="bottom" constant="-7" id="TJv-VE-IzK"/>
+                                                <constraint firstItem="kVm-L9-BxG" firstAttribute="top" secondItem="ONH-td-5jD" secondAttribute="topMargin" constant="-9" id="fAP-ZS-dvL"/>
+                                                <constraint firstItem="KCX-jf-SGK" firstAttribute="leading" secondItem="kVm-L9-BxG" secondAttribute="trailing" constant="8" id="grH-gd-MP2"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="KCX-jf-SGK" secondAttribute="trailing" constant="-8" id="jo1-dA-GsT"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="KCX-jf-SGK" secondAttribute="bottom" constant="-7" id="put-By-T5D"/>
+                                                <constraint firstItem="op8-h1-9Eh" firstAttribute="leading" secondItem="ONH-td-5jD" secondAttribute="leadingMargin" constant="8" id="uR8-Mq-4gR"/>
+                                                <constraint firstItem="op8-h1-9Eh" firstAttribute="centerY" secondItem="kVm-L9-BxG" secondAttribute="centerY" id="zlj-gm-ul5"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

@@ -18,7 +18,7 @@ class FriendRequestCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        approve.backgroundColor = OurColors.ponderGreen
+        approve.setTitleColor(OurColors.ponderGreen, forState: .Normal)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
