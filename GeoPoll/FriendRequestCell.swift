@@ -39,6 +39,8 @@ class FriendRequestCell: UITableViewCell {
         
         friends.append(requests.removeAtIndex(index))
         
+        userData["requests"] = requests
+        
         userData["friends"] = friends
         userData.saveInBackgroundWithBlock { (success, error) -> Void in
             if error == nil
