@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class AccountPopupViewController: UIViewController {
 
@@ -20,10 +21,14 @@ class AccountPopupViewController: UIViewController {
     {
         performSegueWithIdentifier("showRequests", sender: self)
     }
-    
-    @IBAction func dismissView(sender: UIButton)
-    {
-        dismissViewControllerAnimated(true, completion: nil)
-    }
 
+    @IBAction func logout(sender: UIButton)
+    {
+        PFUser.logOutInBackgroundWithBlock { (error) -> Void in
+            if error == nil
+            {
+    
+            }
+        }
+    }
 }

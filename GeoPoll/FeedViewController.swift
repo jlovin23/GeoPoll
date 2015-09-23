@@ -26,6 +26,9 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         questionTableView.separatorStyle = .None
     }
     
+    override func viewDidAppear(animated: Bool) {
+        
+    }
     
     @IBAction func logoutPressed(sender: UIButton)
     {
@@ -118,6 +121,9 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func addPressed(sender: UIBarButtonItem)
     {
         performSegueWithIdentifier("showAddMenu", sender: self)
+    }
+    
+    @IBAction func cancelToPlayersViewController(segue:UIStoryboardSegue) {
     }
     
 }

@@ -41,11 +41,6 @@ class AddFriendView: UIViewController {
         titleLabel.textColor = UIColor.whiteColor()
     }
     
-    @IBAction func cancel(sender: UIButton)
-    {
-        dismissViewControllerAnimated(true, completion: nil)
-    }
-    
     @IBAction func sendRequest(sender: UIButton)
     {
         let query: PFQuery = PFUser.query()!

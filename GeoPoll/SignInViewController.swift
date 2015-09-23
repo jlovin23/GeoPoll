@@ -109,4 +109,7 @@ class SignInViewController: UIViewController
             })
         }
     }
+    
+    @IBAction func goToLogout(segue:UIStoryboardSegue) {
+    }
 }

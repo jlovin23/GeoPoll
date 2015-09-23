@@ -99,7 +99,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="345" y="315"/>
+            <point key="canvasLocation" x="383" y="315"/>
         </scene>
         <!--Add Question Popup-->
         <scene sceneID="WqR-L6-NDK">
@@ -200,8 +200,7 @@
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <connections>
-                                                <action selector="dismissPressed:" destination="MIB-gr-zc2" eventType="touchUpInside" id="bPN-N3-4Xp"/>
-                                                <segue destination="3hl-fH-wla" kind="unwind" unwindAction="unwindToSegue:" id="a5x-6D-0bR"/>
+                                                <segue destination="3hl-fH-wla" kind="unwind" unwindAction="cancelToPlayersViewController:" id="HPA-Ib-zAa"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -274,6 +273,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <state key="normal" title="✓">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -296,11 +296,11 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <state key="normal" title="×">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="cancel:" destination="XTr-83-pTh" eventType="touchUpInside" id="Igp-YA-TLc"/>
-                                    <action selector="cancelPressed:" destination="tho-zj-pGK" eventType="touchUpInside" id="uaB-86-MMQ"/>
+                                    <segue destination="6kC-56-cKS" kind="unwind" unwindAction="cancelToPlayersViewController:" id="4Hc-Nc-OfJ"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Friend" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rG2-6K-xPG">
@@ -398,6 +398,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x6n-1S-v4B" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="6kC-56-cKS" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2890" y="-423"/>
         </scene>
@@ -428,6 +429,9 @@
                                         <state key="normal" title="×">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="74h-gP-gRo" kind="unwind" unwindAction="cancelToPlayersViewController:" id="Lrb-aK-pHx"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.35294117650000001" green="0.54117647059999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -449,7 +453,7 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JZ7-uV-C5b" id="ONH-td-5jD">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kVm-L9-BxG">
@@ -527,6 +531,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oNu-QQ-K27" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="74h-gP-gRo" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1492" y="-1096"/>
         </scene>
@@ -563,15 +568,25 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                             <state key="normal" title="×"/>
                                             <connections>
-                                                <action selector="dismissView:" destination="fKl-49-nSZ" eventType="touchUpInside" id="Lhb-KJ-3J8"/>
+                                                <segue destination="kCm-Pg-pk2" kind="unwind" unwindAction="cancelToPlayersViewController:" id="7Ca-B3-itN"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qph-s7-1cP">
+                                            <rect key="frame" x="274" y="212" width="52" height="30"/>
+                                            <state key="normal" title="Log out"/>
+                                            <connections>
+                                                <action selector="logout:" destination="fKl-49-nSZ" eventType="touchUpInside" id="eLz-tJ-Qyh"/>
+                                                <segue destination="kCm-Pg-pk2" kind="unwind" unwindAction="goToLogout:" id="f3k-d0-Whe"/>
                                             </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="8ST-wL-Zk6" firstAttribute="leading" secondItem="IEa-F3-mwr" secondAttribute="leadingMargin" id="DX0-M3-rLI"/>
                                         <constraint firstItem="ih5-ha-XVj" firstAttribute="centerX" secondItem="IEa-F3-mwr" secondAttribute="centerX" id="EBU-DN-6sd"/>
+                                        <constraint firstItem="qph-s7-1cP" firstAttribute="centerX" secondItem="ih5-ha-XVj" secondAttribute="centerX" id="GkK-aB-unw"/>
                                         <constraint firstItem="ih5-ha-XVj" firstAttribute="top" secondItem="IEa-F3-mwr" secondAttribute="top" constant="142" id="uA5-2E-QDb"/>
                                         <constraint firstItem="8ST-wL-Zk6" firstAttribute="top" secondItem="IEa-F3-mwr" secondAttribute="topMargin" constant="14" id="wGt-fu-n7l"/>
+                                        <constraint firstItem="qph-s7-1cP" firstAttribute="top" secondItem="ih5-ha-XVj" secondAttribute="bottom" constant="40" id="ypg-PR-dQI"/>
                                     </constraints>
                                 </view>
                                 <blurEffect style="light"/>
@@ -590,6 +605,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="afl-4x-SJR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="kCm-Pg-pk2" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1492" y="-403"/>
         </scene>
@@ -715,31 +731,21 @@
                                     <constraint firstAttribute="height" constant="19" id="2p5-wv-7pi"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8mH-Bi-EQB">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8mH-Bi-EQB">
                                 <rect key="frame" x="0.0" y="18" width="60" height="64"/>
-                                <state key="normal">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="×">
-                                            <attributes>
-                                                <font key="NSFont" size="35" name="HelveticaNeue"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="35"/>
+                                <state key="normal" title="×">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="cancelPressed:" destination="tho-zj-pGK" eventType="touchUpInside" id="ypm-jB-Gf6"/>
+                                    <segue destination="6ZE-By-APs" kind="unwind" unwindAction="cancelToPlayersViewController:" id="o79-aK-v2t"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YSb-9L-zWJ">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YSb-9L-zWJ">
                                 <rect key="frame" x="541" y="18" width="59" height="64"/>
-                                <state key="normal">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="➞">
-                                            <attributes>
-                                                <font key="NSFont" size="35" name="HelveticaNeue"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
+                                <fontDescription key="fontDescription" name="GujaratiSangamMN" family="Gujarati Sangam MN" pointSize="35"/>
+                                <state key="normal" title="→">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="confirmPressed:" destination="tho-zj-pGK" eventType="touchUpInside" id="Nln-J2-FS0"/>
@@ -860,10 +866,10 @@
                         <outlet property="checkButton" destination="YSb-9L-zWJ" id="i7V-K8-ZED"/>
                         <outlet property="questionLabel" destination="xiy-kx-ayC" id="bbJ-WH-orG"/>
                         <outlet property="tableView" destination="lpH-7V-MwJ" id="8l5-G5-LpB"/>
-                        <segue destination="Q3b-05-lsS" kind="show" identifier="dismissQuestionCreate" id="oLs-xu-5Tr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vgB-L4-n5H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="6ZE-By-APs" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2527" y="315"/>
         </scene>
@@ -892,7 +898,4 @@
         <image name="location_icon" width="99" height="99"/>
         <image name="social_icon" width="99" height="99"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="oLs-xu-5Tr"/>
-    </inferredMetricsTieBreakers>
 </document>

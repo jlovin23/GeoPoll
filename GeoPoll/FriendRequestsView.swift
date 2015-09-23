@@ -58,4 +58,5 @@ class FriendRequestsView: UIViewController, UITableViewDataSource, UITableViewDe
     @IBAction func acceptPressed(sender: UIButton)
     {
     }
+    
 }
