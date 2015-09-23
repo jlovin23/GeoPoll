@@ -33,7 +33,8 @@ class FriendRequestsView: UIViewController, UITableViewDataSource, UITableViewDe
         
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    {
         return 1
     }
     
@@ -43,6 +44,8 @@ class FriendRequestsView: UIViewController, UITableViewDataSource, UITableViewDe
         pending[indexPath.row].fetchIfNeeded()
         
         cell.nameLabel.text = pending[indexPath.row].username
+        cell.index = indexPath.row
+        cell.requests = pending
         
         return cell
     }
