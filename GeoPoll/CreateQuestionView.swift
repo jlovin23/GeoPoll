@@ -41,6 +41,11 @@ class CreateQuestionView: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
+    override func viewDidLayoutSubviews()
+    {
+        Material.createBottomBorderForTextfield(questionLabel)
+    }
+    
     func setLocation ()
     {
         self.locationManager.delegate = self
@@ -106,11 +111,8 @@ class CreateQuestionView: UIViewController, UITableViewDelegate, UITableViewData
     
     func styleQuestionField()
     {
-        questionLabel.backgroundColor = OurColors.ponderBlue
-        questionLabel.textColor = UIColor.whiteColor()
-        questionLabel.tintColor = UIColor.whiteColor()
-        questionLabel.attributedPlaceholder = NSAttributedString(string:"Question",
-            attributes:[NSForegroundColorAttributeName: OurColors.ultraLightGray])
+        questionLabel.textColor = OurColors.ponderBlue
+        questionLabel.tintColor = OurColors.ponderBlue
     }
     
     // MARK: Table view
@@ -154,5 +156,8 @@ class CreateQuestionView: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func confirmPressed(sender: UIButton)
     {
     }
+    
+    @IBAction func backToQuestionCreate(segue:UIStoryboardSegue)
+    {}
     
 }

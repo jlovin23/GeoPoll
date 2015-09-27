@@ -123,7 +123,8 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         performSegueWithIdentifier("showAddMenu", sender: self)
     }
     
-    @IBAction func cancelToPlayersViewController(segue:UIStoryboardSegue) {
-    }
+    @IBAction func cancelToPlayersViewController(segue:UIStoryboardSegue)
+    {}
+    
     
 }
