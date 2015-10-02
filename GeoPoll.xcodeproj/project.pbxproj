@@ -35,6 +35,8 @@
 		8FBB9D8A1BB1868B009C1CB7 /* FriendRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBB9D891BB1868B009C1CB7 /* FriendRequestCell.swift */; settings = {ASSET_TAGS = (); }; };
 		8FC66A011BA0FE9E00799AB4 /* QuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC66A001BA0FE9E00799AB4 /* QuestionCell.swift */; };
 		8FDE17FD1BA9BED700855B44 /* AddFriendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDE17FC1BA9BED700855B44 /* AddFriendView.swift */; };
+		8FF710921BB47EF400BF7463 /* RecipientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF710911BB47EF400BF7463 /* RecipientCell.swift */; settings = {ASSET_TAGS = (); }; };
+		8FF710941BB47F1600BF7463 /* AddRecipientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF710931BB47F1600BF7463 /* AddRecipientsView.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +72,8 @@
 		8FBB9D891BB1868B009C1CB7 /* FriendRequestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendRequestCell.swift; sourceTree = "<group>"; };
 		8FC66A001BA0FE9E00799AB4 /* QuestionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionCell.swift; sourceTree = "<group>"; };
 		8FDE17FC1BA9BED700855B44 /* AddFriendView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendView.swift; sourceTree = "<group>"; };
+		8FF710911BB47EF400BF7463 /* RecipientCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientCell.swift; sourceTree = "<group>"; };
+		8FF710931BB47F1600BF7463 /* AddRecipientsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRecipientsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +140,8 @@
 			isa = PBXGroup;
 			children = (
 				8FB894F11B9BDF0400E93208 /* Main.storyboard */,
+				8FF710931BB47F1600BF7463 /* AddRecipientsView.swift */,
+				8FF710911BB47EF400BF7463 /* RecipientCell.swift */,
 				8FBB9D891BB1868B009C1CB7 /* FriendRequestCell.swift */,
 				8FBB9D871BB18034009C1CB7 /* FriendRequestsView.swift */,
 				8F505D981BB088BE002F0A07 /* AccountPopupViewController.swift */,
@@ -213,6 +219,7 @@
 				TargetAttributes = {
 					8FB894E71B9BDF0300E93208 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = D33K6DH39C;
 					};
 				};
 			};
@@ -254,6 +261,7 @@
 			files = (
 				8FBB9D881BB18034009C1CB7 /* FriendRequestsView.swift in Sources */,
 				8FB894F01B9BDF0400E93208 /* SignInViewController.swift in Sources */,
+				8FF710941BB47F1600BF7463 /* AddRecipientsView.swift in Sources */,
 				8F505D991BB088BE002F0A07 /* AccountPopupViewController.swift in Sources */,
 				8FA17C461BA4D041001C91D7 /* Material.swift in Sources */,
 				8F6AF24C1B9C8EB8002FF16B /* FeedViewController.swift in Sources */,
@@ -265,6 +273,7 @@
 				8F54C6B01BA2750A000AF5B7 /* AddQuestionPopup.swift in Sources */,
 				8FDE17FD1BA9BED700855B44 /* AddFriendView.swift in Sources */,
 				8FC66A011BA0FE9E00799AB4 /* QuestionCell.swift in Sources */,
+				8FF710921BB47EF400BF7463 /* RecipientCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,6 +387,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -394,6 +404,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

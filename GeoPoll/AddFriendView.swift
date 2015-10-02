@@ -53,18 +53,28 @@ class AddFriendView: UIViewController {
             }
             else
             {
-                let userData: PFObject = user!["userData"] as! PFObject
+                let addedUser: PFUser = user as! PFUser
+                let userData: PFObject = addedUser["userData"] as! PFObject
+                let currentUserData: PFObject = PFUser.currentUser()!.objectForKey("userData") as! PFObject
                 
                 userData.fetchIfNeeded()
+                currentUserData.fetchIfNeeded()
                 
                 var requests: Array<PFUser> = userData["requests"] as! Array<PFUser>
                 requests.append(PFUser.currentUser()!)
                 
                 userData["requests"] = requests
                 
+                
+                var pending: Array<PFUser> = currentUserData["pending"] as! Array<PFUser>
+                pending.append(addedUser)
+                
+                currentUserData["pending"] = pending
+                
                 userData.saveInBackgroundWithBlock({ (success, error) -> Void in
                     if success
                     {
+                        currentUserData.saveInBackground()
                         UIView.animateWithDuration(0.5, animations: { () -> Void in
                             self.successBlurView.alpha = 1.0
                             self.successBlurLabel.alpha = 1.0

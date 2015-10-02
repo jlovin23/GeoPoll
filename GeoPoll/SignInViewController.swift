@@ -99,6 +99,7 @@ class SignInViewController: UIViewController
                     userData["groups"] = [PFObject]()
                     userData["friends"] = [PFUser]()
                     userData["requests"] = [PFUser]()
+                    userData["pending"] = [PFUser]()
                     
                     userData.saveInBackground()
                     
