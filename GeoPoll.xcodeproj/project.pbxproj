@@ -34,6 +34,7 @@
 		8FBB9D881BB18034009C1CB7 /* FriendRequestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBB9D871BB18034009C1CB7 /* FriendRequestsView.swift */; settings = {ASSET_TAGS = (); }; };
 		8FBB9D8A1BB1868B009C1CB7 /* FriendRequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBB9D891BB1868B009C1CB7 /* FriendRequestCell.swift */; settings = {ASSET_TAGS = (); }; };
 		8FC66A011BA0FE9E00799AB4 /* QuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC66A001BA0FE9E00799AB4 /* QuestionCell.swift */; };
+		8FD118E21BC573EC00C1D972 /* GroupMemberSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD118E11BC573EC00C1D972 /* GroupMemberSelection.swift */; settings = {ASSET_TAGS = (); }; };
 		8FDE17FD1BA9BED700855B44 /* AddFriendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDE17FC1BA9BED700855B44 /* AddFriendView.swift */; };
 		8FF710921BB47EF400BF7463 /* RecipientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF710911BB47EF400BF7463 /* RecipientCell.swift */; settings = {ASSET_TAGS = (); }; };
 		8FF710941BB47F1600BF7463 /* AddRecipientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF710931BB47F1600BF7463 /* AddRecipientsView.swift */; settings = {ASSET_TAGS = (); }; };
@@ -71,6 +72,7 @@
 		8FBB9D871BB18034009C1CB7 /* FriendRequestsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendRequestsView.swift; sourceTree = "<group>"; };
 		8FBB9D891BB1868B009C1CB7 /* FriendRequestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendRequestCell.swift; sourceTree = "<group>"; };
 		8FC66A001BA0FE9E00799AB4 /* QuestionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionCell.swift; sourceTree = "<group>"; };
+		8FD118E11BC573EC00C1D972 /* GroupMemberSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupMemberSelection.swift; sourceTree = "<group>"; };
 		8FDE17FC1BA9BED700855B44 /* AddFriendView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendView.swift; sourceTree = "<group>"; };
 		8FF710911BB47EF400BF7463 /* RecipientCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientCell.swift; sourceTree = "<group>"; };
 		8FF710931BB47F1600BF7463 /* AddRecipientsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRecipientsView.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				8FB894F11B9BDF0400E93208 /* Main.storyboard */,
+				8FD118E11BC573EC00C1D972 /* GroupMemberSelection.swift */,
 				8FF710931BB47F1600BF7463 /* AddRecipientsView.swift */,
 				8FF710911BB47EF400BF7463 /* RecipientCell.swift */,
 				8FBB9D891BB1868B009C1CB7 /* FriendRequestCell.swift */,
@@ -259,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FD118E21BC573EC00C1D972 /* GroupMemberSelection.swift in Sources */,
 				8FBB9D881BB18034009C1CB7 /* FriendRequestsView.swift in Sources */,
 				8FB894F01B9BDF0400E93208 /* SignInViewController.swift in Sources */,
 				8FF710941BB47F1600BF7463 /* AddRecipientsView.swift in Sources */,

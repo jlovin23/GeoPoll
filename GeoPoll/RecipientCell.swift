@@ -11,13 +11,10 @@ import UIKit
 class RecipientCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var addedLabel: UILabel!
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        addedLabel.textColor = UIColor.whiteColor()
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

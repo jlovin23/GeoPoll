@@ -16,6 +16,10 @@ class AddQuestionPopup: UIViewController {
     @IBOutlet weak var localLabel: UIButton!
     @IBOutlet weak var addIcon: UIButton!
     @IBOutlet weak var addLabel: UIButton!
+    @IBOutlet weak var groupButton: UIButton!
+    @IBOutlet weak var groupLabel: UIButton!
+    
+    
     @IBOutlet weak var downChevron: UIButton!
     
     var shouldGoToQuestionCreate: String!
@@ -83,6 +87,12 @@ class AddQuestionPopup: UIViewController {
     {
         performSegueWithIdentifier("addFriend", sender: self)
     }
+    
+    @IBAction func groupPressed(sender: UIButton)
+    {
+        performSegueWithIdentifier("memberSelection", sender: self)
+    }
+    
    
     @IBAction func dismissPressed(sender: UIButton) {
         UIView.animateWithDuration(0.7, animations: { () -> Void in
