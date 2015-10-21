@@ -81,7 +81,9 @@ class FriendRequestCell: UITableViewCell {
         
         requestingUserFriends.append(PFUser.currentUser()!)
         
-        requestingUserData["friends"] = requestingUserFriends
+        requestingUserData["friends"] = requestingUserFriends.sort {
+            $0.username!.localizedCaseInsensitiveCompare($1.username!) == NSComparisonResult.OrderedAscending
+        }
         requestingUserData["pending"] = requestingUserPending
         
         requestingUserData.saveInBackground()

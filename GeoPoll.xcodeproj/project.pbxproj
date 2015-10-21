@@ -24,6 +24,7 @@
 		8F6AF2481B9C85B2002FF16B /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F6AF2471B9C85B2002FF16B /* libz.dylib */; };
 		8F6AF24A1B9C85BC002FF16B /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F6AF2491B9C85BC002FF16B /* libsqlite3.dylib */; };
 		8F6AF24C1B9C8EB8002FF16B /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6AF24B1B9C8EB8002FF16B /* FeedViewController.swift */; };
+		8F87210D1BD53E9100D3940F /* NameGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F87210C1BD53E9100D3940F /* NameGroupViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		8F9415351BA864540081F91A /* CreateQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9415341BA864540081F91A /* CreateQuestionView.swift */; };
 		8FA17C461BA4D041001C91D7 /* Material.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA17C451BA4D041001C91D7 /* Material.swift */; };
 		8FB894EE1B9BDF0400E93208 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB894ED1B9BDF0400E93208 /* AppDelegate.swift */; };
@@ -58,6 +59,7 @@
 		8F6AF2471B9C85B2002FF16B /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		8F6AF2491B9C85BC002FF16B /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		8F6AF24B1B9C8EB8002FF16B /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		8F87210C1BD53E9100D3940F /* NameGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameGroupViewController.swift; sourceTree = "<group>"; };
 		8F9415341BA864540081F91A /* CreateQuestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateQuestionView.swift; sourceTree = "<group>"; };
 		8FA17C451BA4D041001C91D7 /* Material.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Material.swift; sourceTree = "<group>"; };
 		8FB894E81B9BDF0400E93208 /* GeoPoll.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeoPoll.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				8FB894F11B9BDF0400E93208 /* Main.storyboard */,
+				8F87210C1BD53E9100D3940F /* NameGroupViewController.swift */,
 				8FD118E11BC573EC00C1D972 /* GroupMemberSelection.swift */,
 				8FF710931BB47F1600BF7463 /* AddRecipientsView.swift */,
 				8FF710911BB47EF400BF7463 /* RecipientCell.swift */,
@@ -275,6 +278,7 @@
 				8F53DA691B9C9B9400808773 /* OurColors.swift in Sources */,
 				8FB894EE1B9BDF0400E93208 /* AppDelegate.swift in Sources */,
 				8F54C6B01BA2750A000AF5B7 /* AddQuestionPopup.swift in Sources */,
+				8F87210D1BD53E9100D3940F /* NameGroupViewController.swift in Sources */,
 				8FDE17FD1BA9BED700855B44 /* AddFriendView.swift in Sources */,
 				8FC66A011BA0FE9E00799AB4 /* QuestionCell.swift in Sources */,
 				8FF710921BB47EF400BF7463 /* RecipientCell.swift in Sources */,

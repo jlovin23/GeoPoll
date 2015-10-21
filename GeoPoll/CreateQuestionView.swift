@@ -19,7 +19,6 @@ class CreateQuestionView: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var checkButton: UIButton!
     let locationManager = CLLocationManager()
     var currentGeo: PFGeoPoint!
-    
     var numberOfOptions = 2
     var questionType: String!
     var addQuestion: PFObject!
@@ -96,17 +95,6 @@ class CreateQuestionView: UIViewController, UITableViewDelegate, UITableViewData
         
         addQuestion["answers"] = answers
         addQuestion["results"] = results
-        
-        addQuestion.saveInBackgroundWithBlock { (success, error) -> Void in
-            if error != nil
-            {
-                print("noooo")
-            }
-            else
-            {
-                print("yaaaaa")
-            }
-        }
     }
     
     func styleQuestionField()
@@ -159,5 +147,28 @@ class CreateQuestionView: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBAction func backToQuestionCreate(segue:UIStoryboardSegue)
     {}
+    
+    
+    func randomStringWithLength (len : Int) -> String {
+        
+        let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        
+        var randomString : NSMutableString = NSMutableString(capacity: len)
+        
+        for (var i=0; i < len; i++){
+            var length = UInt32 (letters.length)
+            var rand = arc4random_uniform(length)
+            randomString.appendFormat("%C", letters.characterAtIndex(Int(rand)))
+        }
+        
+        return randomString as String
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "goToRecipients"
+        {
+            let dest = segue.destinationViewController as! AddRecipientsView
+            dest.question = addQuestion
+        }
+    }
     
 }

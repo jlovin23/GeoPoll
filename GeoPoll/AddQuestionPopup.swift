@@ -19,7 +19,6 @@ class AddQuestionPopup: UIViewController {
     @IBOutlet weak var groupButton: UIButton!
     @IBOutlet weak var groupLabel: UIButton!
     
-    
     @IBOutlet weak var downChevron: UIButton!
     
     var shouldGoToQuestionCreate: String!
@@ -32,30 +31,47 @@ class AddQuestionPopup: UIViewController {
     }
     
     override func viewDidAppear(animated: Bool) {
-        slideInAnItem(directIcon, delayTime: 0.0)
-        slideInAnItem(directLabel, delayTime: 0.1)
-        slideInAnItem(localIcon, delayTime: 0.15)
-        slideInAnItem(localLabel, delayTime: 0.2)
-        slideInAnItem(addIcon, delayTime: 0.25)
-        slideInAnItem(addLabel, delayTime: 0.3)
+        slideInAnItemLeft(directIcon, delayTime: 0.0)
+        slideInAnItemLeft(directLabel, delayTime: 0.0)
+        slideInAnItemRight(localIcon, delayTime: 0.1)
+        slideInAnItemRight(localLabel, delayTime: 0.1)
+        slideInAnItemLeft(addIcon, delayTime: 0.15)
+        slideInAnItemLeft(addLabel, delayTime: 0.15)
+        slideInAnItemRight(groupButton, delayTime: 0.2)
+        slideInAnItemRight(groupLabel, delayTime: 0.2)
     }
     
     override func viewDidLayoutSubviews() {
-        setItemOffscreen(directIcon)
-        setItemOffscreen(directLabel)
-        setItemOffscreen(localIcon)
-        setItemOffscreen(localLabel)
-        setItemOffscreen(addIcon)
-        setItemOffscreen(addLabel)
+        setItemOffscreenLeft(directIcon)
+        setItemOffscreenLeft(directLabel)
+        setItemOffscreenRight(localIcon)
+        setItemOffscreenRight(localLabel)
+        setItemOffscreenLeft(addIcon)
+        setItemOffscreenLeft(addLabel)
+        setItemOffscreenRight(groupButton)
+        setItemOffscreenRight(groupLabel)
     }
     
-    func slideInAnItem(item: UIButton, delayTime: Double){
+    // MARK: Button animations
+    
+    func slideInAnItemLeft(item: UIButton, delayTime: Double){
         UIView.animateWithDuration(0.3, delay: delayTime, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.3, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
-            item.frame = CGRectMake(self.view.frame.size.width/2-item.frame.size.width/2, item.frame.origin.y, item.frame.size.width, item.frame.size.height)
+            item.frame = CGRectMake(self.view.frame.size.width/4-item.frame.size.width/2, item.frame.origin.y, item.frame.size.width, item.frame.size.height)
             }, completion: nil)
     }
     
-    func setItemOffscreen(item: UIButton)
+    func slideInAnItemRight(item: UIButton, delayTime: Double){
+        UIView.animateWithDuration(0.3, delay: delayTime, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.3, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
+            item.frame = CGRectMake((self.view.frame.size.width/4) * 3 - item.frame.size.width/2, item.frame.origin.y, item.frame.size.width, item.frame.size.height)
+            }, completion: nil)
+    }
+    
+    func setItemOffscreenLeft(item: UIButton)
+    {
+        item.frame = CGRectMake(self.view.frame.size.width + item.frame.size.width, item.frame.origin.y, item.frame.size.width, item.frame.size.height)
+    }
+    
+    func setItemOffscreenRight(item: UIButton)
     {
         item.frame = CGRectMake(self.view.frame.size.width + item.frame.size.width, item.frame.origin.y, item.frame.size.width, item.frame.size.height)
     }
@@ -66,10 +82,7 @@ class AddQuestionPopup: UIViewController {
             }, completion: nil)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    // MARK: Button Actions
     
     @IBAction func directPressed(sender: UIButton)
     {
@@ -90,7 +103,8 @@ class AddQuestionPopup: UIViewController {
     
     @IBAction func groupPressed(sender: UIButton)
     {
-        performSegueWithIdentifier("memberSelection", sender: self)
+        performSegueWithIdentifier("showGroupNameChoice", sender: self)
+        //performSegueWithIdentifier("memberSelection", sender: self)
     }
     
    
@@ -123,4 +137,7 @@ class AddQuestionPopup: UIViewController {
             
         }
     }
+    
+    @IBAction func cancelGroupCreate(segue:UIStoryboardSegue)
+    {}
 }

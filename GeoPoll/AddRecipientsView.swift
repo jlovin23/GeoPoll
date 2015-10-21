@@ -13,11 +13,14 @@ class AddRecipientsView: UIViewController, UITableViewDataSource, UITableViewDel
 
     var friends = [PFUser]()
     var groups = [PFObject]()
+    var question: PFObject!
+    
+    @IBOutlet weak var table: UITableView!
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-
+        
         updateFriends()
     }
     
@@ -36,8 +39,7 @@ class AddRecipientsView: UIViewController, UITableViewDataSource, UITableViewDel
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0
         {
-            return 1
-            //return groups.count
+            return groups.count
         }
         else
         {
@@ -60,19 +62,61 @@ class AddRecipientsView: UIViewController, UITableViewDataSource, UITableViewDel
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! RecipientCell
-        
-        if friends.count > 0
+        if indexPath.section == 0
         {
-            friends[indexPath.row].fetchIfNeeded()
-            cell.nameLabel.text = friends[indexPath.row].username
+            let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+            
+            if groups.count > 0
+            {
+                groups[indexPath.row].fetchIfNeeded()
+                cell.textLabel!.text = groups[indexPath.row].objectForKey("name") as! String
+            }
+            else
+            {
+                cell.textLabel!.text = "Nah"
+            }
+            
+            return cell
         }
         else
         {
-            cell.nameLabel.text = "Nah"
+            let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+            
+            if friends.count > 0
+            {
+                friends[indexPath.row].fetchIfNeeded()
+                cell.textLabel!.text = friends[indexPath.row].username
+            }
+            else
+            {
+                cell.textLabel!.text = "Nah"
+            }
+            
+            return cell
         }
-        
-        return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
+        let selectedCell = tableView.cellForRowAtIndexPath(indexPath)
+        selectedCell?.accessoryType = .Checkmark
+    }
+    
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath)
+    {
+        let selectedCell = tableView.cellForRowAtIndexPath(indexPath)
+        selectedCell?.accessoryType = .None
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0
+        {
+            return "Groups"
+        }
+        else
+        {
+            return "Friends"
+        }
     }
     
     @IBAction func goBack(sender: UIButton)
@@ -80,20 +124,21 @@ class AddRecipientsView: UIViewController, UITableViewDataSource, UITableViewDel
         
     }
     
-    @IBAction func userChecked(sender: UIButton)
+    @IBAction func send(sender: UIButton)
     {
-        if sender.selected == false
+        question.saveInBackground()
+        
+        for var g = 0; g < groups.count; g++
         {
-            let uncheckedImage = UIImage(named: "checkbox_checked")
-            sender.setImage(uncheckedImage,forState: UIControlState.Normal)
-            sender.selected = true
-        }
-        else
-        {
-            let checkedImage = UIImage(named: "Checkbox_unchecked")
-            sender.setImage(checkedImage,forState: UIControlState.Normal)
-            sender.selected = false
+            if (tableView(table, cellForRowAtIndexPath: NSIndexPath(forRow: g, inSection: 0)) as! RecipientCell).selected
+            {
+                var selectedGroup: PFObject = groups[g]
+                selectedGroup.fetchIfNeeded()
+                var groupQuestions = selectedGroup["questions"] as! Array<PFObject>
+                groupQuestions.append(question)
+                selectedGroup["questions"] = groupQuestions
+                selectedGroup.saveInBackground()
+            }
         }
     }
-
 }
