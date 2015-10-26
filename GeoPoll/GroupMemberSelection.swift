@@ -113,6 +113,16 @@ class GroupMemberSelection: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBAction func saveGroup(sender: UIButton)
     {
+        
+        let currentUser = PFUser.currentUser()!
+        
+        let currentUserData: PFObject = currentUser.objectForKey("userData") as! PFObject
+        currentUserData.fetchIfNeeded()
+        
+        var myGroups: Array<PFObject> = currentUserData["groups"] as! Array<PFObject>
+        
+        
+        
         let group: PFObject = PFObject(className: "Group")
         group["members"] = selected
         group["questions"] = [PFObject]()
@@ -128,6 +138,11 @@ class GroupMemberSelection: UIViewController, UITableViewDelegate, UITableViewDa
             userData["groups"] = groups
             userData.saveInBackground()
         }
+        selected.append(PFUser.currentUser()!)
+        
+        myGroups.append(group)
+        currentUserData.saveInBackground()
+
         
         group.saveInBackgroundWithBlock { (success, error) -> Void in
             if success

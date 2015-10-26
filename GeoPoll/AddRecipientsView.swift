@@ -132,7 +132,7 @@ class AddRecipientsView: UIViewController, UITableViewDataSource, UITableViewDel
         {
             if (tableView(table, cellForRowAtIndexPath: NSIndexPath(forRow: g, inSection: 0)) as! RecipientCell).selected
             {
-                var selectedGroup: PFObject = groups[g]
+                let selectedGroup: PFObject = groups[g]
                 selectedGroup.fetchIfNeeded()
                 var groupQuestions = selectedGroup["questions"] as! Array<PFObject>
                 groupQuestions.append(question)

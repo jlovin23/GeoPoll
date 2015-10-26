@@ -143,6 +143,7 @@ class CreateQuestionView: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBAction func confirmPressed(sender: UIButton)
     {
+        performSegueWithIdentifier("goToRecipients", sender: self)
     }
     
     @IBAction func backToQuestionCreate(segue:UIStoryboardSegue)
