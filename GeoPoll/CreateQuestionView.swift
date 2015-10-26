@@ -166,6 +166,7 @@ class CreateQuestionView: UIViewController, UITableViewDelegate, UITableViewData
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "goToRecipients"
         {
+            print("go to recipients")
             let dest = segue.destinationViewController as! AddRecipientsView
             dest.question = addQuestion
         }

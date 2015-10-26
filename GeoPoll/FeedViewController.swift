@@ -12,7 +12,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet weak var questionTableView: UITableView!
     var popupDrawerIsShowing = false
-    var questions: Array<PFObject>!
+    var questions: Array<PFObject> = [PFObject]()
     let fakeData = ["this", "thaat"]
 
     override func viewDidLoad()
@@ -52,8 +52,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let groups: Array<PFObject> = userData["groups"] as! Array<PFObject>
         
-        questions = [PFObject]()
-        
         for eachGroup in groups
         {
             let groupQuestions: Array<PFObject> = eachGroup["questions"] as! Array<PFObject>
@@ -68,7 +66,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: Table View
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fakeData.count
+        return questions.count
         
     }
     
@@ -79,7 +77,8 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! QuestionCell
         
-        cell.label.text = fakeData[indexPath.row]
+        questions[indexPath.row].fetchIfNeeded()
+        cell.label.text = questions[indexPath.row].objectForKey("question") as! String
         cell.selectionStyle = .None
         
         return cell
