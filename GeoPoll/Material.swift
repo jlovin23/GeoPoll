@@ -32,4 +32,18 @@ class Material
         field.layer.addSublayer(border)
         field.layer.masksToBounds = true
     }
+    
+    static func styleBorderedButton(button: UIButton)
+    {
+        button.layer.borderColor = OurColors.ponderBlue.CGColor
+        button.layer.borderWidth = 4
+        
+        button.backgroundColor = UIColor.whiteColor()
+        button.setTitleColor(OurColors.ponderBlue, forState: .Normal)
+        button.layer.cornerRadius = 5
+        
+        button.layer.shadowColor = UIColor.blackColor().CGColor
+        button.layer.shadowOffset = CGSizeMake(0, 2)
+        button.layer.shadowOpacity = 0.2
+    }
 }

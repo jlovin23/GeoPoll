@@ -66,6 +66,7 @@ class CreateQuestionView: UIViewController, UITableViewDelegate, UITableViewData
         var answers: Array<String> = [String]()
         var results: Array<Array<PFUser>> = [Array]()
         addQuestion["question"] = questionLabel.text
+        addQuestion["creator"] = PFUser.currentUser()
         
         if questionType == "local"
         {
@@ -95,6 +96,7 @@ class CreateQuestionView: UIViewController, UITableViewDelegate, UITableViewData
         
         addQuestion["answers"] = answers
         addQuestion["results"] = results
+        performSegueWithIdentifier("goToRecipients", sender: self)
     }
     
     func styleQuestionField()
@@ -141,11 +143,6 @@ class CreateQuestionView: UIViewController, UITableViewDelegate, UITableViewData
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    @IBAction func confirmPressed(sender: UIButton)
-    {
-        performSegueWithIdentifier("goToRecipients", sender: self)
-    }
-    
     @IBAction func backToQuestionCreate(segue:UIStoryboardSegue)
     {}
     
@@ -169,6 +166,8 @@ class CreateQuestionView: UIViewController, UITableViewDelegate, UITableViewData
         {
             print("go to recipients")
             let dest = segue.destinationViewController as! AddRecipientsView
+            
+            addQuestion.saveInBackground()
             dest.question = addQuestion
         }
     }

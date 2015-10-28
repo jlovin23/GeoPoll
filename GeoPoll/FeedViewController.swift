@@ -18,6 +18,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        self.getQuestions()
         
         navigationController!.navigationBar.barTintColor = OurColors.ponderBlue
         navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
@@ -42,7 +43,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     
     //get questions
-    func getQuestions ()
+    func getQuestions()
     {
         let user: PFUser = PFUser.currentUser()!
         
@@ -54,6 +55,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         for eachGroup in groups
         {
+            eachGroup.fetchIfNeeded()
             let groupQuestions: Array<PFObject> = eachGroup["questions"] as! Array<PFObject>
             
             for quest in groupQuestions
@@ -65,8 +67,16 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // MARK: Table View
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return questions.count
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        if questions.count > 0
+        {
+            return questions.count
+        }
+        else
+        {
+            return 1
+        }
         
     }
     
@@ -74,31 +84,44 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         return 1
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! QuestionCell
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as!QuestionCell
+        let cellAnswerButtons = [cell.option1, cell.option2, cell.option3, cell.option4]
         
-        questions[indexPath.row].fetchIfNeeded()
-        cell.label.text = questions[indexPath.row].objectForKey("question") as! String
-        cell.selectionStyle = .None
-        
+        if questions.count > 0
+        {
+            questions[indexPath.row].fetchIfNeeded()
+            cell.label.text = questions[indexPath.row].objectForKey("question") as! String
+            //cell.sentFromName.text = questions[indexPath.row].objectForKey("creator") as! String
+            cell.selectionStyle = .None
+        }
+        else
+        {
+
+            cell.hidden = true
+        }
+    
         return cell
-        
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath)
     {
-        cell.contentView.backgroundColor = UIColor(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
-        let cardView : UIView = UIView(frame: CGRectMake(self.view.frame.size.width * 0.05, 10, self.view.frame.size.width * 0.9, 130))
-        cardView.layer.backgroundColor = CGColorCreate(CGColorSpaceCreateDeviceRGB(), [1.0, 1.0, 1.0, 1.0])
-        cardView.layer.masksToBounds = false
-        cardView.layer.cornerRadius = 1.5
-        cardView.layer.shadowColor = UIColor.blackColor().CGColor
-        cardView.layer.shadowOpacity = 0.2
-        cardView.layer.shadowRadius = 2.5
-        cardView.layer.shadowOffset = CGSize(width: 0, height: 4)
-        
-        cell.contentView.addSubview(cardView)
-        cell.contentView.sendSubviewToBack(cardView)
+        if questions.count > 0
+        {
+            cell.contentView.backgroundColor = UIColor(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
+            let cardView : UIView = UIView(frame: CGRectMake(0, 10, self.view.frame.size.width + 20, 370))
+            cardView.layer.backgroundColor = CGColorCreate(CGColorSpaceCreateDeviceRGB(), [1.0, 1.0, 1.0, 1.0])
+            cardView.layer.masksToBounds = false
+            cardView.layer.cornerRadius = 1.5
+            cardView.layer.shadowColor = UIColor.blackColor().CGColor
+            cardView.layer.shadowOpacity = 0.2
+            cardView.layer.shadowRadius = 2.5
+            cardView.layer.shadowOffset = CGSize(width: 0, height: 4)
+            
+            cell.contentView.addSubview(cardView)
+            cell.contentView.sendSubviewToBack(cardView)
+        }
     }
     
     @IBAction func showAddQuestionPopup(sender: UIButton)

@@ -22,6 +22,7 @@ class AddRecipientsView: UIViewController, UITableViewDataSource, UITableViewDel
         super.viewDidLoad()
         
         updateFriends()
+        print(question)
     }
     
     func updateFriends()
@@ -100,12 +101,14 @@ class AddRecipientsView: UIViewController, UITableViewDataSource, UITableViewDel
     {
         let selectedCell = tableView.cellForRowAtIndexPath(indexPath)
         selectedCell?.accessoryType = .Checkmark
+        selectedCell?.selected = true
     }
     
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath)
     {
         let selectedCell = tableView.cellForRowAtIndexPath(indexPath)
         selectedCell?.accessoryType = .None
+        selectedCell?.selected = false
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -130,7 +133,8 @@ class AddRecipientsView: UIViewController, UITableViewDataSource, UITableViewDel
         
         for var g = 0; g < groups.count; g++
         {
-            if (tableView(table, cellForRowAtIndexPath: NSIndexPath(forRow: g, inSection: 0)) as! RecipientCell).selected
+            let indexPathThing = NSIndexPath(forRow: g, inSection: 0)
+            if table.cellForRowAtIndexPath(indexPathThing)?.selected == true
             {
                 let selectedGroup: PFObject = groups[g]
                 selectedGroup.fetchIfNeeded()
