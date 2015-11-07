@@ -22,6 +22,7 @@ class CreateQuestionView: UIViewController, UITableViewDelegate, UITableViewData
     var numberOfOptions = 2
     var questionType: String!
     var addQuestion: PFObject!
+    var keyboardHeight: CGFloat!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +38,41 @@ class CreateQuestionView: UIViewController, UITableViewDelegate, UITableViewData
         
         checkButton.backgroundColor = OurColors.ponderBlue
         checkButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        //NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
+        //NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    override func viewWillDisappear(animated: Bool)
+    {
+        super.viewWillDisappear(animated)
         
+        //NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        if let userInfo = notification.userInfo {
+            if let keyboardSize =  (userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+                keyboardHeight = keyboardSize.height
+            }
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification)
+    {
+        self.animateTextField(false)
+    }
+    
+    func animateTextField(up: Bool) {
+        let movement = (up ? -keyboardHeight : keyboardHeight)
+        
+        UIView.animateWithDuration(0.3, animations: {
+            self.tableView.frame = CGRectOffset(self.tableView.frame, 0, movement)
+        })
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     override func viewDidLayoutSubviews()
@@ -146,7 +181,6 @@ class CreateQuestionView: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func backToQuestionCreate(segue:UIStoryboardSegue)
     {}
     
-    
     func randomStringWithLength (len : Int) -> String {
         
         let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
@@ -172,4 +206,10 @@ class CreateQuestionView: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    // MARK: Keyboard management
+    
+    @IBAction func moveViewUpForField(sender: UITextField)
+    {
+        //animateTextField(true)
+    }
 }

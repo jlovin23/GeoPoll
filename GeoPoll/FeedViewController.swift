@@ -11,9 +11,18 @@ import Parse
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var questionTableView: UITableView!
+    
+    
     var popupDrawerIsShowing = false
     var questions: Array<PFObject> = [PFObject]()
     let fakeData = ["this", "thaat"]
+    
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "handleRefresh:", forControlEvents: UIControlEvents.ValueChanged)
+        
+        return refreshControl
+    }()
 
     override func viewDidLoad()
     {
@@ -25,6 +34,17 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         
         questionTableView.separatorStyle = .None
+        questionTableView.backgroundColor = OurColors.ultraLightGray
+        
+        self.questionTableView.addSubview(refreshControl)
+    }
+    
+    func handleRefresh(refreshControl: UIRefreshControl)
+    {
+        questions = [PFObject]()
+        self.getQuestions()
+        questionTableView.reloadData()
+        refreshControl.endRefreshing()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -63,6 +83,8 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
                 questions.append(quest)
             }
         }
+        
+        questions = questions.reverse()
     }
     
     // MARK: Table View
@@ -87,13 +109,18 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as!QuestionCell
-        let cellAnswerButtons = [cell.option1, cell.option2, cell.option3, cell.option4]
+        
+        
+        print("hi")
         
         if questions.count > 0
         {
-            questions[indexPath.row].fetchIfNeeded()
-            cell.label.text = questions[indexPath.row].objectForKey("question") as! String
-            //cell.sentFromName.text = questions[indexPath.row].objectForKey("creator") as! String
+            cell.label.text = "insert question"
+            cell.sentFromName.text = "insert creator"
+            print("hello")
+            cell.question = questions[indexPath.row]
+            cell.table.reloadData()
+           
             cell.selectionStyle = .None
         }
         else
@@ -109,8 +136,8 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     {
         if questions.count > 0
         {
-            cell.contentView.backgroundColor = UIColor(red: 215/255, green: 215/255, blue: 215/255, alpha: 1)
-            let cardView : UIView = UIView(frame: CGRectMake(0, 10, self.view.frame.size.width + 20, 370))
+            cell.contentView.backgroundColor = OurColors.ultraLightGray
+            let cardView : UIView = UIView(frame: CGRectMake(self.view.frame.size.width * 0.035, 5, self.view.frame.size.width * 0.95, 355))
             cardView.layer.backgroundColor = CGColorCreate(CGColorSpaceCreateDeviceRGB(), [1.0, 1.0, 1.0, 1.0])
             cardView.layer.masksToBounds = false
             cardView.layer.cornerRadius = 1.5

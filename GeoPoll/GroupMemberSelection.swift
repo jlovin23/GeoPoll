@@ -113,48 +113,87 @@ class GroupMemberSelection: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBAction func saveGroup(sender: UIButton)
     {
+        // get current user and their UserData
         
-        let currentUser = PFUser.currentUser()!
+        let currentUser: PFUser = PFUser.currentUser()!
+        // add the existing user to the "selected" array so the group will be added to their groups
         
-        let currentUserData: PFObject = currentUser.objectForKey("userData") as! PFObject
-        currentUserData.fetchIfNeeded()
+        selected.append(currentUser)
         
-        var myGroups: Array<PFObject> = currentUserData["groups"] as! Array<PFObject>
-        
-        
+        // create group object and save the members, questions, creator, and name
         
         let group: PFObject = PFObject(className: "Group")
         group["members"] = selected
         group["questions"] = [PFObject]()
-        group["creator"] = PFUser.currentUser()!
+        group["creator"] = currentUser
         group["name"] = groupName
         
-        for user in self.selected
+        
+        for person in self.selected
         {
-            let userData: PFObject = user["userData"] as! PFObject
-            userData.fetchIfNeeded()
-            var groups: Array<PFObject> = userData["groups"] as! Array<PFObject>
-            groups.append(group)
-            userData["groups"] = groups
-            userData.saveInBackground()
+            let personUserData: PFObject = person["userData"] as! PFObject
+            personUserData.fetchIfNeeded()
+            var personsGroups = personUserData["groups"] as! [PFObject]
+            personsGroups.append(group)
+            personUserData["groups"] = personsGroups
+            personUserData.save()
         }
-        selected.append(PFUser.currentUser()!)
         
-        myGroups.append(group)
-        currentUserData.saveInBackground()
-
+        group.saveInBackground()
         
-        group.saveInBackgroundWithBlock { (success, error) -> Void in
-            if success
-            {
-                
-                print("group saved")
-            }
-            else
-            {
-                print("group not saved")
-            }
-        }
+        
+        // go through each user in the selected array, and add the group to their groups in their UserData
+        
+        
+        
+        
+        
+        
+//        let currentUser: PFUser = PFUser.currentUser()!
+//        
+//        let currentUserData: PFObject = currentUser.objectForKey("userData") as! PFObject
+//        currentUserData.fetchIfNeeded()
+//        
+//        selected.append(currentUser)
+//        //--------------------------
+//        
+//        
+//        let group: PFObject = PFObject(className: "Group")
+//        group["members"] = selected
+//        group["questions"] = [PFObject]()
+//        group["creator"] = PFUser.currentUser()!
+//        group["name"] = groupName
+//        
+//        print("before loop")
+//        
+//        
+//        
+//        
+//        for eachUser in self.selected
+//        {
+//            print("loop")
+//            let userData: PFObject = eachUser["userData"] as! PFObject
+//            userData.fetchIfNeeded()
+//            var groups: Array<PFObject> = userData["groups"] as! Array<PFObject>
+//            groups.append(group)
+//            userData["groups"] = groups
+//            userData.saveInBackgroundWithBlock({ (success, error) -> Void in
+//                if success
+//                {
+//                    print("userData saved")
+//                }
+//            })
+//            print("added to users groups")
+//            
+//        }
+//        print("after loop")
+//        
+//        group.saveInBackgroundWithBlock { (success, error) -> Void in
+//            if success
+//            {
+//                print("group saved")
+//            }
+//        }
     }
     
 }

@@ -42,8 +42,8 @@ class Material
         button.setTitleColor(OurColors.ponderBlue, forState: .Normal)
         button.layer.cornerRadius = 5
         
-        button.layer.shadowColor = UIColor.blackColor().CGColor
-        button.layer.shadowOffset = CGSizeMake(0, 2)
-        button.layer.shadowOpacity = 0.2
+        //button.layer.shadowColor = UIColor.blackColor().CGColor
+        //button.layer.shadowOffset = CGSizeMake(0, 2)
+        //button.layer.shadowOpacity = 0.2
     }
 }

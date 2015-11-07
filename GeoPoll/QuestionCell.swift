@@ -7,34 +7,71 @@
 //
 
 import UIKit
+import Parse
 
-class QuestionCell: UITableViewCell {
-
+class QuestionCell: UITableViewCell, UITableViewDataSource, UITableViewDelegate
+{
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var sentFromName: UILabel!
-    @IBOutlet weak var option1: UIButton!
-    @IBOutlet weak var option2: UIButton!
-    @IBOutlet weak var option3: UIButton!
-    @IBOutlet weak var option4: UIButton!
     @IBOutlet weak var divider: UIView!
+    @IBOutlet weak var table: UITableView!
     
-    override func awakeFromNib() {
+    var question: PFObject!
+    var answers = []
+    let data = ["dfsaf", "dsfa", "dsf"]
+    
+    override func awakeFromNib()
+    {
         super.awakeFromNib()
-       
-        Material.styleBorderedButton(option1)
-        Material.styleBorderedButton(option2)
-        Material.styleBorderedButton(option3)
-        Material.styleBorderedButton(option4)
+        table.dataSource = self
+        table.delegate = self
+        table.separatorStyle = .None
+    }
+
+    // MARK: Table View
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        if question != nil
+        {
+            question.fetchIfNeeded()
+            return (question["answers"] as! Array<String>).count
+        }
+        else
+        {
+           return 1
+        }
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
+        let cell = tableView.dequeueReusableCellWithIdentifier("answerCell", forIndexPath: indexPath)
         
-        divider.layer.shadowColor = UIColor.blackColor().CGColor
-        divider.layer.shadowOffset = CGSizeMake(0, 2)
-        divider.layer.shadowOpacity = 0.2
+        if question == nil
+        {
+            cell.textLabel!.text = ""
+        }
+        else
+        {
+            question?.fetchIfNeeded()
+            cell.textLabel!.text = (question["answers"] as! Array<String>)[indexPath.row]
+            cell.textLabel?.textColor = UIColor.whiteColor()
+            
+            if indexPath.row % 2 == 0
+            {
+                cell.backgroundColor = OurColors.lightPonderBlue
+            }
+            else
+            {
+                cell.backgroundColor = OurColors.ponderBlue
+            }
+        }
+        
+        return cell
     }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
 }
