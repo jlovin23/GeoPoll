@@ -8,7 +8,7 @@
 import UIKit
 import Parse
 
-class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
     
     @IBOutlet weak var questionTableView: UITableView!
     
@@ -16,6 +16,9 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     var popupDrawerIsShowing = false
     var questions: Array<PFObject> = [PFObject]()
     let fakeData = ["this", "thaat"]
+    var currentGeo: PFGeoPoint!
+    let locationManager = CLLocationManager()
+    var radius: Double = 5.0
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -87,6 +90,18 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         questions = questions.reverse()
     }
     
+    func getLocalQuestions()
+    {
+        self.setLocation()
+        
+        let query = PFQuery(className: "Question")
+        query.whereKey("local", equalTo: true)
+        query.whereKey("location", nearGeoPoint: currentGeo, withinMiles: radius)
+        
+        self.questions = query.findObjects() as! Array<PFObject>
+        
+    }
+    
     // MARK: Table View
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
@@ -100,6 +115,22 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             return 1
         }
         
+    }
+    
+    func setLocation ()
+    {
+        self.locationManager.delegate = self
+        
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        
+        self.locationManager.requestWhenInUseAuthorization()
+        
+        self.locationManager.startUpdatingLocation()
+        
+        
+        self.currentGeo = PFGeoPoint(location: locationManager.location)
+        
+        print(self.currentGeo.description)
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
