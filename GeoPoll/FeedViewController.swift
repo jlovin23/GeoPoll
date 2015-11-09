@@ -11,7 +11,8 @@ import Parse
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
     
     @IBOutlet weak var questionTableView: UITableView!
-    
+    @IBOutlet weak var segmentedTabber: UISegmentedControl!
+    @IBOutlet weak var menuIcon: UIBarButtonItem!
     
     var popupDrawerIsShowing = false
     var questions: Array<PFObject> = [PFObject]()
@@ -48,10 +49,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.getQuestions()
         questionTableView.reloadData()
         refreshControl.endRefreshing()
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        
     }
     
     @IBAction func logoutPressed(sender: UIButton)
@@ -193,7 +190,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
-    @IBAction func accountMenuPressed(sender: UIButton)
+    @IBAction func accountMenuPressed(sender: UIBarButtonItem)
     {
         performSegueWithIdentifier("showAccountPopup", sender: self)
     }

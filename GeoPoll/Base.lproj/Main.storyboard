@@ -940,7 +940,7 @@
             </objects>
             <point key="canvasLocation" x="1492" y="-403"/>
         </scene>
-        <!--Feed-->
+        <!--Feed View Controller-->
         <scene sceneID="BY0-J7-EbL">
             <objects>
                 <viewController id="R8r-c4-bEo" customClass="FeedViewController" customModule="SmartAsk" customModuleProvider="target" sceneMemberID="viewController">
@@ -1069,35 +1069,22 @@
                             <constraint firstItem="LQE-WM-XAZ" firstAttribute="top" secondItem="dxz-zM-woT" secondAttribute="bottom" constant="-64" id="jt4-ZC-iA3"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Feed" id="Umb-8y-Cl6">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="MOs-7b-0Io">
-                            <view key="customView" contentMode="scaleToFill" id="XEg-hC-msQ">
-                                <rect key="frame" x="20" y="5" width="133" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qu1-3l-6jD">
-                                        <rect key="frame" x="27" y="6" width="0.0" height="0.0"/>
-                                        <animations/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IYW-kA-bBD">
-                                        <rect key="frame" x="0.0" y="0.0" width="27" height="27"/>
-                                        <animations/>
-                                        <state key="normal" image="accounts_icon">
-                                            <attributedString key="attributedTitle"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="accountMenuPressed:" destination="R8r-c4-bEo" eventType="touchUpInside" id="Q81-Se-laZ"/>
-                                            <action selector="showAddQuestionPopup:" destination="R8r-c4-bEo" eventType="touchUpInside" id="juv-NE-Coy"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <animations/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
+                    <navigationItem key="navigationItem" id="Umb-8y-Cl6">
+                        <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" title="≣" id="2kl-ob-BsA">
+                            <connections>
+                                <action selector="accountMenuPressed:" destination="R8r-c4-bEo" id="5Xx-B8-zOt"/>
+                            </connections>
                         </barButtonItem>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="LhL-yD-WxF">
+                            <rect key="frame" x="180" y="7" width="240" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <animations/>
+                            <segments>
+                                <segment title="Direct"/>
+                                <segment title="Local"/>
+                            </segments>
+                        </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="TSe-HV-2TY">
                             <connections>
                                 <action selector="addPressed:" destination="R8r-c4-bEo" id="3FI-m4-vsE"/>
@@ -1105,7 +1092,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="menuIcon" destination="2kl-ob-BsA" id="0Qt-2q-4rC"/>
                         <outlet property="questionTableView" destination="LQE-WM-XAZ" id="EQ9-De-dtM"/>
+                        <outlet property="segmentedTabber" destination="LhL-yD-WxF" id="kD9-j2-0nA"/>
                         <segue destination="MIB-gr-zc2" kind="presentation" identifier="showAddMenu" animates="NO" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="JDJ-1q-rAm"/>
                         <segue destination="fKl-49-nSZ" kind="presentation" identifier="showAccountPopup" animates="NO" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="CJP-IT-dXN"/>
                     </connections>
@@ -1450,7 +1439,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="accounts_icon" width="99" height="99"/>
         <image name="direct_icon" width="99" height="99"/>
         <image name="friendRequests" width="79" height="85"/>
         <image name="groupsIcon" width="99" height="99"/>
