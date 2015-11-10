@@ -41,6 +41,9 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         questionTableView.backgroundColor = OurColors.ultraLightGray
         
         self.questionTableView.addSubview(refreshControl)
+        
+        let font = UIFont.systemFontOfSize(25)
+        menuIcon.setTitleTextAttributes([NSFontAttributeName:font], forState: UIControlState.Normal)
     }
     
     func handleRefresh(refreshControl: UIRefreshControl)

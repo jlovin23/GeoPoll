@@ -1071,7 +1071,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Umb-8y-Cl6">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" title="≣" id="2kl-ob-BsA">
+                        <barButtonItem key="leftBarButtonItem" title="≡" id="2kl-ob-BsA">
                             <connections>
                                 <action selector="accountMenuPressed:" destination="R8r-c4-bEo" id="5Xx-B8-zOt"/>
                             </connections>
