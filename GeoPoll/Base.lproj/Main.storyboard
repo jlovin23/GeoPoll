@@ -1084,6 +1084,9 @@
                                 <segment title="Direct"/>
                                 <segment title="Local"/>
                             </segments>
+                            <connections>
+                                <action selector="switchQuestionType:" destination="R8r-c4-bEo" eventType="valueChanged" id="Z7N-C7-tqe"/>
+                            </connections>
                         </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="TSe-HV-2TY">
                             <connections>

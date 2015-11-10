@@ -42,7 +42,8 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         self.questionTableView.addSubview(refreshControl)
         
-        let font = UIFont.systemFontOfSize(25)
+        let font = UIFont.systemFontOfSize(25
+        )
         menuIcon.setTitleTextAttributes([NSFontAttributeName:font], forState: UIControlState.Normal)
     }
     
@@ -54,6 +55,14 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         refreshControl.endRefreshing()
     }
     
+    @IBAction func switchQuestionType(sender: UISegmentedControl)
+    {
+        getQuestions()
+        questionTableView.reloadData()
+        print("segmented tab pressed")
+    }
+    
+   
     @IBAction func logoutPressed(sender: UIButton)
     {
         PFUser.logOutInBackgroundWithBlock { (error) -> Void in
@@ -64,9 +73,33 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    
-    //get questions
     func getQuestions()
+    {
+        if segmentedTabber.selectedSegmentIndex == 0
+        {
+            getDirectQuestions()
+            print("got direct")
+        }
+        else
+        {
+            getLocalQuestions()
+            print("got local")
+        }
+    }
+    
+    func getLocalQuestions()
+    {
+        self.setLocation()
+        
+        let query = PFQuery(className: "Question")
+        query.whereKey("local", equalTo: true)
+        query.whereKey("location", nearGeoPoint: currentGeo, withinMiles: radius)
+        
+        self.questions = query.findObjects() as! Array<PFObject>
+        
+    }
+        
+    func getDirectQuestions()
     {
         let user: PFUser = PFUser.currentUser()!
         
@@ -88,18 +121,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         
         questions = questions.reverse()
-    }
-    
-    func getLocalQuestions()
-    {
-        self.setLocation()
-        
-        let query = PFQuery(className: "Question")
-        query.whereKey("local", equalTo: true)
-        query.whereKey("location", nearGeoPoint: currentGeo, withinMiles: radius)
-        
-        self.questions = query.findObjects() as! Array<PFObject>
-        
     }
     
     // MARK: Table View
@@ -147,7 +168,8 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         if questions.count > 0
         {
             cell.label.text = "insert question"
-            cell.sentFromName.text = "insert creator"
+            cell.sentFromName.text = "insert creator" //questions[indexPath.row]["creator"]!["username"] as! String
+            
             print("hello")
             cell.question = questions[indexPath.row]
             cell.table.reloadData()
