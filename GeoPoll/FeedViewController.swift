@@ -31,20 +31,31 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        self.getQuestions()
         
-        navigationController!.navigationBar.barTintColor = OurColors.ponderBlue
-        navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        navigationController!.navigationBar.tintColor = UIColor.whiteColor()
-        
-        questionTableView.separatorStyle = .None
-        questionTableView.backgroundColor = OurColors.ultraLightGray
-        
-        self.questionTableView.addSubview(refreshControl)
-        
-        let font = UIFont.systemFontOfSize(25
-        )
-        menuIcon.setTitleTextAttributes([NSFontAttributeName:font], forState: UIControlState.Normal)
+        let currentUser = PFUser.currentUser()
+        if currentUser != nil
+        {
+            self.setLocation()
+            self.getQuestions()
+            
+            navigationController!.navigationBar.barTintColor = OurColors.ponderBlue
+            navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+            navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+            
+            questionTableView.separatorStyle = .None
+            questionTableView.backgroundColor = OurColors.ultraLightGray
+            
+            self.questionTableView.addSubview(refreshControl)
+            
+            let font = UIFont.systemFontOfSize(25
+            )
+            menuIcon.setTitleTextAttributes([NSFontAttributeName:font], forState: UIControlState.Normal)
+        }
+        else
+        {
+            print("should segue")
+            performSegueWithIdentifier("goToSignin", sender: self)
+        }
     }
     
     func handleRefresh(refreshControl: UIRefreshControl)
@@ -75,6 +86,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func getQuestions()
     {
+        questions = [PFObject]()
         if segmentedTabber.selectedSegmentIndex == 0
         {
             getDirectQuestions()
@@ -162,15 +174,26 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as!QuestionCell
         
-        
-        print("hi")
+        questions[indexPath.row].fetchIfNeeded()
+        let questionAnswers = (questions[indexPath.row]["answers"] as! Array<String>)
+        if questionAnswers.count <= 4
+        {
+            cell.table.scrollEnabled = false
+        }
+        else
+        {
+            cell.table.scrollEnabled = true
+        }
         
         if questions.count > 0
         {
-            cell.label.text = "insert question"
-            cell.sentFromName.text = "insert creator" //questions[indexPath.row]["creator"]!["username"] as! String
-            
-            print("hello")
+            cell.label.text = questions[indexPath.row]["question"] as! String
+            if let creator = questions[indexPath.row]["creator"]
+            {
+                creator.fetchIfNeeded()
+                cell.sentFromName.text = creator["username"] as! String
+            }
+
             cell.question = questions[indexPath.row]
             cell.table.reloadData()
            
@@ -194,10 +217,10 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             cardView.layer.backgroundColor = CGColorCreate(CGColorSpaceCreateDeviceRGB(), [1.0, 1.0, 1.0, 1.0])
             cardView.layer.masksToBounds = false
             cardView.layer.cornerRadius = 1.5
-            cardView.layer.shadowColor = UIColor.blackColor().CGColor
-            cardView.layer.shadowOpacity = 0.2
-            cardView.layer.shadowRadius = 2.5
-            cardView.layer.shadowOffset = CGSize(width: 0, height: 4)
+//          cardView.layer.shadowColor = UIColor.blackColor().CGColor
+//          cardView.layer.shadowOpacity = 0.2
+//          cardView.layer.shadowRadius = 2.5
+//          cardView.layer.shadowOffset = CGSize(width: 0, height: 4)
             
             cell.contentView.addSubview(cardView)
             cell.contentView.sendSubviewToBack(cardView)

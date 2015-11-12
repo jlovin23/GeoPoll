@@ -34,18 +34,6 @@ class SignInViewController: UIViewController
         createBottomBorderForTextfield(passwordField)
     }
     
-    override func viewDidAppear(animated: Bool)
-    {
-        let currentUser = PFUser.currentUser()
-        if currentUser != nil
-        {
-            self.performSegueWithIdentifier("signInSuccess", sender: self)
-        } else
-        {
-            print(currentUser?.description)
-        }
-    }
-    
     func createBottomBorderForTextfield(field: UITextField){
         let border = CALayer()
         let width = CGFloat(2.0)
@@ -65,7 +53,7 @@ class SignInViewController: UIViewController
                 alert.addAction(okButton)
                 self.presentViewController(alert, animated: true, completion: nil)
             } else {
-                self.performSegueWithIdentifier("signInSuccess", sender: self)
+                self.performSegueWithIdentifier("signedIn", sender: self)
             }
         }
     }

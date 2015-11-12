@@ -74,4 +74,37 @@ class QuestionCell: UITableViewCell, UITableViewDataSource, UITableViewDelegate
         
         return cell
     }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
+        
+        let user: PFUser = PFUser.currentUser()!
+        
+        let userData:PFObject = user["userData"] as! PFObject
+        
+        userData.fetchIfNeeded()
+        
+        var answeredQuestions: Array<PFObject> = userData["answeredQuestions"] as! Array<PFObject>
+        answeredQuestions.append(question)
+        userData["answeredQuestions"] = answeredQuestions
+        userData.save()
+
+        
+        question.fetchIfNeeded()
+        var results: Array<Array<PFUser>> = question["results"] as! Array<Array<PFUser>>
+        
+        var answerResults: Array<PFUser> = results[indexPath.row]
+        
+        answerResults.append(PFUser.currentUser()!)
+        
+        results[indexPath.row] = answerResults
+        
+        question["results"] = results
+        
+        question.saveInBackground()
+        
+        
+        
+        
+    }
 }
