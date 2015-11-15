@@ -174,19 +174,19 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as!QuestionCell
         
-        questions[indexPath.row].fetchIfNeeded()
-        let questionAnswers = (questions[indexPath.row]["answers"] as! Array<String>)
-        if questionAnswers.count <= 4
-        {
-            cell.table.scrollEnabled = false
-        }
-        else
-        {
-            cell.table.scrollEnabled = true
-        }
-        
         if questions.count > 0
         {
+            questions[indexPath.row].fetchIfNeeded()
+            let questionAnswers = (questions[indexPath.row]["answers"] as! Array<String>)
+            if questionAnswers.count <= 4
+            {
+                cell.table.scrollEnabled = false
+            }
+            else
+            {
+                cell.table.scrollEnabled = true
+            }
+            
             cell.label.text = questions[indexPath.row]["question"] as! String
             if let creator = questions[indexPath.row]["creator"]
             {

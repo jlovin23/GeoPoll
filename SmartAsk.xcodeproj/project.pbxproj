@@ -428,6 +428,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.JosephLovinger.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = SmartAsk;
 				PROVISIONING_PROFILE = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Release;
 		};
