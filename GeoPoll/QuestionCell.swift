@@ -50,17 +50,18 @@ class QuestionCell: UITableViewCell, UITableViewDataSource, UITableViewDelegate
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier("answerCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("answerCell", forIndexPath: indexPath) as! ChoiceCell
         
         if question == nil
         {
-            cell.textLabel!.text = ""
+            cell.title.text = ""
         }
         else
         {
             question?.fetchIfNeeded()
-            cell.textLabel!.text = (question["answers"] as! Array<String>)[indexPath.row]
-            cell.textLabel?.textColor = UIColor.whiteColor()
+            cell.title.text = (question["answers"] as! Array<String>)[indexPath.row]
+            cell.title.textColor = UIColor.whiteColor()
+            cell.percentChosen.textColor = UIColor.clearColor()
             
             if indexPath.row % 2 == 0
             {
@@ -71,6 +72,7 @@ class QuestionCell: UITableViewCell, UITableViewDataSource, UITableViewDelegate
                 cell.backgroundColor = OurColors.ponderBlue
             }
         }
+        cell.selectionStyle = .None
         
         return cell
     }
@@ -103,7 +105,9 @@ class QuestionCell: UITableViewCell, UITableViewDataSource, UITableViewDelegate
         
         question.saveInBackground()
         
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
         
+        Material.showPercentageBar(cell!, percentage: 90)
         
         
     }

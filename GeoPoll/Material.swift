@@ -46,4 +46,17 @@ class Material
         //button.layer.shadowOffset = CGSizeMake(0, 2)
         //button.layer.shadowOpacity = 0.2
     }
+    
+    static func showPercentageBar(cell: UITableViewCell, percentage: Double)
+    {
+        let cellFrame = CGRectMake(0, 0, cell.contentView.frame.size.width * CGFloat(percentage/100), cell.contentView.frame.size.height)
+        let originalCellFrame = CGRectMake(0, 0, 0, cell.contentView.frame.size.height)
+        let bar = UIView(frame: originalCellFrame)
+        bar.backgroundColor = UIColor.greenColor()
+        cell.backgroundColor = UIColor.clearColor()
+        cell.addSubview(bar)
+        UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.3, options: .CurveEaseIn, animations: { () -> Void in
+            bar.frame = cellFrame
+            }, completion: nil)
+    }
 }

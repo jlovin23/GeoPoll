@@ -80,8 +80,6 @@ class SignInViewController: UIViewController
                     self.presentViewController(alert, animated: true, completion: nil)
                 } else
                 {
-                    
-                    
                     userData["answeredQuestions"] = [PFObject]()
                     userData["askedQuestions"] = [PFObject] ()
                     userData["groups"] = [PFObject]()
