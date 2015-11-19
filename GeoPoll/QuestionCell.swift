@@ -60,17 +60,8 @@ class QuestionCell: UITableViewCell, UITableViewDataSource, UITableViewDelegate
         {
             question?.fetchIfNeeded()
             cell.title.text = (question["answers"] as! Array<String>)[indexPath.row]
-            cell.title.textColor = UIColor.whiteColor()
+            cell.title.textColor = UIColor.blackColor()
             cell.percentChosen.textColor = UIColor.clearColor()
-            
-            if indexPath.row % 2 == 0
-            {
-                cell.backgroundColor = OurColors.lightPonderBlue
-            }
-            else
-            {
-                cell.backgroundColor = OurColors.ponderBlue
-            }
         }
         cell.selectionStyle = .None
         
@@ -105,10 +96,23 @@ class QuestionCell: UITableViewCell, UITableViewDataSource, UITableViewDelegate
         
         question.saveInBackground()
         
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! ChoiceCell
         
-        Material.showPercentageBar(cell!, percentage: 90)
+        Material.showPercentageBar(cell, percentage: 90)
         
+        UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.3, options: .CurveEaseIn, animations: { () -> Void in
+            cell.title.frame = CGRectMake(cell.frame.origin.x + 30, cell.title.frame.origin.y, cell.title.frame.size.width, cell.title.frame.size.height)
+            }, completion: nil)
+    }
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath)
+    {
+        let smallFrame = CGRectMake(5, 5, cell.contentView.frame.size.width - 10, cell.contentView.frame.size.height - 10)
+        let smallBackground = UIView(frame: smallFrame)
         
+        smallBackground.backgroundColor = OurColors.ponderBlue
+        smallBackground.layer.cornerRadius = 5
+        cell.contentView.addSubview(smallBackground)
+        cell.contentView.sendSubviewToBack(smallBackground)
     }
 }
