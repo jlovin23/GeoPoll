@@ -81,7 +81,6 @@ class QuestionCell: UITableViewCell, UITableViewDataSource, UITableViewDelegate
         answeredQuestions.append(question)
         userData["answeredQuestions"] = answeredQuestions
         userData.save()
-
         
         question.fetchIfNeeded()
         var results: Array<Array<PFUser>> = question["results"] as! Array<Array<PFUser>>
@@ -98,7 +97,23 @@ class QuestionCell: UITableViewCell, UITableViewDataSource, UITableViewDelegate
         
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! ChoiceCell
         
-        Material.showPercentageBar(cell, percentage: 90)
+        var numselections = [Double]()
+        for item in results
+        {
+            numselections.append(Double(item.count))
+        }
+        print(numselections)
+        print(indexPath.row)
+        
+        var totalVotes = 0.0
+        for number in numselections
+        {
+            totalVotes += number
+        }
+        let percentThisOptionHasBeenChosen = (numselections[indexPath.row] / totalVotes) * 100
+        
+        Material.showPercentageBar(cell, percentage: percentThisOptionHasBeenChosen, question: cell.title.text!)
+        cell.title.hidden = true
         
         UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.3, options: .CurveEaseIn, animations: { () -> Void in
             cell.title.frame = CGRectMake(cell.frame.origin.x + 30, cell.title.frame.origin.y, cell.title.frame.size.width, cell.title.frame.size.height)

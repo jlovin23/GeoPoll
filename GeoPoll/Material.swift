@@ -43,14 +43,26 @@ class Material
         button.layer.cornerRadius = 5
     }
     
-    static func showPercentageBar(cell: UITableViewCell, percentage: Double)
+    static func showPercentageBar(cell: UITableViewCell, percentage: Double, question: String)
     {
-        let cellFrame = CGRectMake(0, 0, cell.contentView.frame.size.width * CGFloat(percentage/100), cell.contentView.frame.size.height)
-        let originalCellFrame = CGRectMake(0, 0, 0, cell.contentView.frame.size.height)
+        let cellFrame = CGRectMake(5, 5, (cell.contentView.frame.size.width - 10) * CGFloat(percentage/100), cell.contentView.frame.size.height-10)
+        let originalCellFrame = CGRectMake(5, 5, 0, cell.contentView.frame.size.height)
         let bar = UIView(frame: originalCellFrame)
-        bar.backgroundColor = UIColor.greenColor()
-        bar.alpha = 0.5
+        bar.backgroundColor = OurColors.ultraLightPonderBlue
         bar.layer.cornerRadius = 5
+        
+        let labelFrame = CGRectMake(5, 0, (cell.contentView.frame.size.width - 10) * CGFloat(percentage/100), 20)
+        let titleLabel = UILabel(frame: labelFrame)
+        titleLabel.text = question
+        titleLabel.textColor = UIColor.whiteColor()
+        
+        let percentageFrame = CGRectMake(5, 20, 200 * CGFloat(percentage/100), 20)
+        let percentageLabel = UILabel(frame: percentageFrame)
+        percentageLabel.text = "\(Int(percentage))%"
+        percentageLabel.textColor = UIColor.blackColor()
+        
+        bar.addSubview(titleLabel)
+        bar.addSubview(percentageLabel)
         cell.addSubview(bar)
 
         UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.3, options: .CurveEaseIn, animations: { () -> Void in

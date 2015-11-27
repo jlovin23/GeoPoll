@@ -29,6 +29,8 @@ class OurColors: UIColor
     static let ponderBlue = UIColor(red: 101/255, green: 153/255, blue: 255/255, alpha: 1.0)
     
     static let lightPonderBlue = UIColor(red: 101/255, green: 153/255, blue: 215/255, alpha: 1.0)
+    
+    static let ultraLightPonderBlue = UIColor(red: 84/255, green: 194/255, blue: 255/255, alpha: 1.0)
    
     static let ponderGreen = UIColor(red: 0, green: 255/255, blue: 1/255, alpha: 1.0)
     

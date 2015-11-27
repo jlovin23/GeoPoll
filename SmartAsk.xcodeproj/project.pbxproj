@@ -27,6 +27,7 @@
 		8F87210D1BD53E9100D3940F /* NameGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F87210C1BD53E9100D3940F /* NameGroupViewController.swift */; };
 		8F9415351BA864540081F91A /* CreateQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9415341BA864540081F91A /* CreateQuestionView.swift */; };
 		8FA17C461BA4D041001C91D7 /* Material.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA17C451BA4D041001C91D7 /* Material.swift */; };
+		8FA33BAB1C075D8D003228F4 /* GrowFromCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA33BAA1C075D8D003228F4 /* GrowFromCenter.swift */; };
 		8FB894EE1B9BDF0400E93208 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB894ED1B9BDF0400E93208 /* AppDelegate.swift */; };
 		8FB894F01B9BDF0400E93208 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB894EF1B9BDF0400E93208 /* SignInViewController.swift */; };
 		8FB894F31B9BDF0400E93208 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FB894F11B9BDF0400E93208 /* Main.storyboard */; };
@@ -63,6 +64,7 @@
 		8F87210C1BD53E9100D3940F /* NameGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NameGroupViewController.swift; sourceTree = "<group>"; };
 		8F9415341BA864540081F91A /* CreateQuestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateQuestionView.swift; sourceTree = "<group>"; };
 		8FA17C451BA4D041001C91D7 /* Material.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Material.swift; sourceTree = "<group>"; };
+		8FA33BAA1C075D8D003228F4 /* GrowFromCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrowFromCenter.swift; sourceTree = "<group>"; };
 		8FB894E81B9BDF0400E93208 /* SmartAsk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartAsk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FB894EC1B9BDF0400E93208 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8FB894ED1B9BDF0400E93208 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 		8FB894EB1B9BDF0400E93208 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8FA33BAA1C075D8D003228F4 /* GrowFromCenter.swift */,
 				8FA17C451BA4D041001C91D7 /* Material.swift */,
 				8FB894F41B9BDF0400E93208 /* Images.xcassets */,
 				8F53DA681B9C9B9400808773 /* OurColors.swift */,
@@ -319,6 +322,7 @@
 				8FD118E21BC573EC00C1D972 /* GroupMemberSelection.swift in Sources */,
 				8FBB9D881BB18034009C1CB7 /* FriendRequestsView.swift in Sources */,
 				8FE841211BFCDF8A001E86F0 /* ChoiceCell.swift in Sources */,
+				8FA33BAB1C075D8D003228F4 /* GrowFromCenter.swift in Sources */,
 				8FB894F01B9BDF0400E93208 /* SignInViewController.swift in Sources */,
 				8FF710941BB47F1600BF7463 /* AddRecipientsView.swift in Sources */,
 				8F505D991BB088BE002F0A07 /* AccountPopupViewController.swift in Sources */,

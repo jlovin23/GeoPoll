@@ -17,6 +17,7 @@ class CreateQuestionView: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var questionLabel: UITextField!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var checkButton: UIButton!
+    
     let locationManager = CLLocationManager()
     var currentGeo: PFGeoPoint!
     var numberOfOptions = 2
@@ -185,11 +186,11 @@ class CreateQuestionView: UIViewController, UITableViewDelegate, UITableViewData
         
         let letters : NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         
-        var randomString : NSMutableString = NSMutableString(capacity: len)
+        let randomString : NSMutableString = NSMutableString(capacity: len)
         
         for (var i=0; i < len; i++){
-            var length = UInt32 (letters.length)
-            var rand = arc4random_uniform(length)
+            let length = UInt32 (letters.length)
+            let rand = arc4random_uniform(length)
             randomString.appendFormat("%C", letters.characterAtIndex(Int(rand)))
         }
         
