@@ -19,6 +19,8 @@ class QuestionCell: UITableViewCell, UITableViewDataSource, UITableViewDelegate
     var question: PFObject!
     var answers = []
     let data = ["dfsaf", "dsfa", "dsf"]
+    var numTimesOptionsChosen: [Double]!
+    var timer = NSTimer()
     
     override func awakeFromNib()
     {
@@ -34,7 +36,7 @@ class QuestionCell: UITableViewCell, UITableViewDataSource, UITableViewDelegate
     {
         if question != nil
         {
-            question.fetchIfNeeded()
+            question.fetchIfNeededInBackground()
             return (question["answers"] as! Array<String>).count
         }
         else
@@ -58,7 +60,7 @@ class QuestionCell: UITableViewCell, UITableViewDataSource, UITableViewDelegate
         }
         else
         {
-            question?.fetchIfNeeded()
+            question?.fetchIfNeededInBackground()
             cell.title.text = (question["answers"] as! Array<String>)[indexPath.row]
             cell.title.textColor = UIColor.blackColor()
             cell.percentChosen.textColor = UIColor.clearColor()
@@ -70,47 +72,16 @@ class QuestionCell: UITableViewCell, UITableViewDataSource, UITableViewDelegate
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-        
-        let user: PFUser = PFUser.currentUser()!
-        
-        let userData:PFObject = user["userData"] as! PFObject
-        
-        userData.fetchIfNeeded()
-        
-        var answeredQuestions: Array<PFObject> = userData["answeredQuestions"] as! Array<PFObject>
-        answeredQuestions.append(question)
-        userData["answeredQuestions"] = answeredQuestions
-        userData.save()
-        
-        question.fetchIfNeeded()
-        var results: Array<Array<PFUser>> = question["results"] as! Array<Array<PFUser>>
-        
-        var answerResults: Array<PFUser> = results[indexPath.row]
-        
-        answerResults.append(PFUser.currentUser()!)
-        
-        results[indexPath.row] = answerResults
-        
-        question["results"] = results
-        
-        question.saveInBackground()
-        
+        timer = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: "saveQuestionResults", userInfo: indexPath.row, repeats: false)
+      
         let cell = tableView.cellForRowAtIndexPath(indexPath) as! ChoiceCell
         
-        var numselections = [Double]()
-        for item in results
-        {
-            numselections.append(Double(item.count))
-        }
-        print(numselections)
-        print(indexPath.row)
-        
         var totalVotes = 0.0
-        for number in numselections
+        for number in numTimesOptionsChosen
         {
             totalVotes += number
         }
-        let percentThisOptionHasBeenChosen = (numselections[indexPath.row] / totalVotes) * 100
+        let percentThisOptionHasBeenChosen = (numTimesOptionsChosen[indexPath.row] / totalVotes) * 100
         
         Material.showPercentageBar(cell, percentage: percentThisOptionHasBeenChosen, question: cell.title.text!)
         cell.title.hidden = true
@@ -129,5 +100,30 @@ class QuestionCell: UITableViewCell, UITableViewDataSource, UITableViewDelegate
         smallBackground.layer.cornerRadius = 5
         cell.contentView.addSubview(smallBackground)
         cell.contentView.sendSubviewToBack(smallBackground)
+    }
+    
+    func saveQuestionResults()
+    {
+        let user: PFUser = PFUser.currentUser()!
+        let userData:PFObject = user["userData"] as! PFObject
+        userData.fetchIfNeededInBackground()
+        
+        var answeredQuestions: Array<PFObject> = userData["answeredQuestions"] as! Array<PFObject>
+        answeredQuestions.append(question)
+        userData["answeredQuestions"] = answeredQuestions
+        userData.save()
+        
+        question.fetchIfNeededInBackground()
+        
+        var results: Array<Array<PFUser>> = question["results"] as! Array<Array<PFUser>>
+        var answerResults: Array<PFUser> = results[timer.userInfo as! Int]
+        answerResults.append(PFUser.currentUser()!)
+        results[timer.userInfo as! Int] = answerResults
+        
+        question["results"] = results
+        
+        question.saveInBackground()
+        
+        print("saved")
     }
 }

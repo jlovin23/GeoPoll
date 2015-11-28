@@ -195,6 +195,13 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
 
             cell.question = questions[indexPath.row]
+            let results = questions[indexPath.row]["results"] as! Array<Array<PFUser>>
+            var eachOneChosen = [Double]()
+            for result in results
+            {
+                eachOneChosen.append(Double(result.count))
+            }
+            cell.numTimesOptionsChosen = eachOneChosen
             cell.table.reloadData()
            
             cell.selectionStyle = .None
