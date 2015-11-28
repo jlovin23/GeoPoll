@@ -50,6 +50,14 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             let font = UIFont.systemFontOfSize(25
             )
             menuIcon.setTitleTextAttributes([NSFontAttributeName:font], forState: UIControlState.Normal)
+            
+            let leftRecognizer: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeLeft:")
+            leftRecognizer.direction = .Left
+            self.view .addGestureRecognizer(leftRecognizer)
+            
+            let rightRecognizer: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "swipeRight:")
+            rightRecognizer.direction = .Right
+            self.view .addGestureRecognizer(rightRecognizer)
         }
         else
         {
@@ -234,11 +242,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    @IBAction func showAddQuestionPopup(sender: UIButton)
-    {
-        //performSegueWithIdentifier("showAddMenu", sender: self)
-    }
-    
     @IBAction func directOrLocalPressed(sender: UIButton)
     {
         performSegueWithIdentifier("goToQuestionCreation", sender: self)
@@ -258,5 +261,13 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func cancelToPlayersViewController(segue:UIStoryboardSegue)
     {}
     
+    func swipeLeft(recognizer : UISwipeGestureRecognizer)
+    {
+        self.performSegueWithIdentifier("showAddMenu", sender: self)
+    }
     
+    func swipeRight(recognizer : UISwipeGestureRecognizer)
+    {
+        self.performSegueWithIdentifier("showAccountPopup", sender: self)
+    }
 }

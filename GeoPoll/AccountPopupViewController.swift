@@ -51,4 +51,6 @@ class AccountPopupViewController: UIViewController
             button.frame = CGRectMake(self.view.frame.size.width/2 - button.frame.size.width/2, button.frame.origin.y, button.frame.size.width, button.frame.size.height)
             }, completion: nil)
     }
+    
+    
 }

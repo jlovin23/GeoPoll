@@ -257,6 +257,7 @@
                                         </button>
                                     </subviews>
                                     <animations/>
+                                    <gestureRecognizers/>
                                     <constraints>
                                         <constraint firstItem="Iut-q7-U4T" firstAttribute="top" relation="greaterThanOrEqual" secondItem="kVF-h1-Iic" secondAttribute="top" constant="8" id="5fF-U9-gc8"/>
                                         <constraint firstItem="YJe-vD-pry" firstAttribute="leading" secondItem="wEE-HL-nq0" secondAttribute="leading" id="9NF-a6-jOz"/>
@@ -285,6 +286,9 @@
                                         <constraint firstItem="xAF-Th-yPr" firstAttribute="top" secondItem="wEE-HL-nq0" secondAttribute="bottom" constant="-129" id="sQF-Wi-Omf"/>
                                         <constraint firstItem="wEE-HL-nq0" firstAttribute="top" secondItem="h69-5a-6Uv" secondAttribute="bottom" constant="-9" id="yAG-Zt-RaR"/>
                                     </constraints>
+                                    <connections>
+                                        <outletCollection property="gestureRecognizers" destination="ep4-04-Gg1" appends="YES" id="DSa-EL-xTm"/>
+                                    </connections>
                                 </view>
                                 <animations/>
                                 <blurEffect style="light"/>
@@ -316,6 +320,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Svv-Uv-N6t" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="3hl-fH-wla" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="ep4-04-Gg1">
+                    <connections>
+                        <segue destination="3hl-fH-wla" kind="unwind" unwindAction="cancelToPlayersViewController:" id="ns0-e0-oUM"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2238" y="-403"/>
         </scene>
@@ -902,6 +911,7 @@
                                         </button>
                                     </subviews>
                                     <animations/>
+                                    <gestureRecognizers/>
                                     <constraints>
                                         <constraint firstItem="n3h-6H-VdM" firstAttribute="centerY" secondItem="IEa-F3-mwr" secondAttribute="centerY" constant="43" id="62e-fm-m2c"/>
                                         <constraint firstItem="8ST-wL-Zk6" firstAttribute="leading" secondItem="IEa-F3-mwr" secondAttribute="leadingMargin" id="DX0-M3-rLI"/>
@@ -914,6 +924,9 @@
                                         <constraint firstItem="8ST-wL-Zk6" firstAttribute="top" secondItem="IEa-F3-mwr" secondAttribute="topMargin" constant="14" id="wGt-fu-n7l"/>
                                         <constraint firstItem="qph-s7-1cP" firstAttribute="top" secondItem="ih5-ha-XVj" secondAttribute="bottom" constant="154" id="ypg-PR-dQI"/>
                                     </constraints>
+                                    <connections>
+                                        <outletCollection property="gestureRecognizers" destination="KxP-up-aEk" appends="YES" id="v8J-nf-od7"/>
+                                    </connections>
                                 </view>
                                 <animations/>
                                 <blurEffect style="light"/>
@@ -938,6 +951,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="afl-4x-SJR" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="kCm-Pg-pk2" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="KxP-up-aEk">
+                    <connections>
+                        <action selector="tappedAnywhere:" destination="fKl-49-nSZ" id="rnQ-Vd-GXq"/>
+                        <segue destination="kCm-Pg-pk2" kind="unwind" unwindAction="cancelToPlayersViewController:" id="q2c-UN-It1"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1492" y="-403"/>
         </scene>
