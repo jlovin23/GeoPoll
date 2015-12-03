@@ -16,11 +16,13 @@ class QuestionCell: UITableViewCell, UITableViewDataSource, UITableViewDelegate
     @IBOutlet weak var divider: UIView!
     @IBOutlet weak var table: UITableView!
     
+    
     var question: PFObject!
     var answers = []
     let data = ["dfsaf", "dsfa", "dsf"]
     var numTimesOptionsChosen: [Double]!
     var timer = NSTimer()
+    var results: Array<Array<PFUser>>!
     
     override func awakeFromNib()
     {
@@ -89,6 +91,7 @@ class QuestionCell: UITableViewCell, UITableViewDataSource, UITableViewDelegate
         UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.3, options: .CurveEaseIn, animations: { () -> Void in
             cell.title.frame = CGRectMake(cell.frame.origin.x + 30, cell.title.frame.origin.y, cell.title.frame.size.width, cell.title.frame.size.height)
             }, completion: nil)
+        tableView.userInteractionEnabled = false
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath)
@@ -111,7 +114,7 @@ class QuestionCell: UITableViewCell, UITableViewDataSource, UITableViewDelegate
         var answeredQuestions: Array<PFObject> = userData["answeredQuestions"] as! Array<PFObject>
         answeredQuestions.append(question)
         userData["answeredQuestions"] = answeredQuestions
-        userData.save()
+        userData.saveInBackground()
         
         question.fetchIfNeededInBackground()
         

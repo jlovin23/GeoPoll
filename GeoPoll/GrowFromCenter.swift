@@ -14,13 +14,13 @@ class GrowFromCenter: UIStoryboardSegue
     {
         let sourceVC = self.sourceViewController
         let destinationVC = self.destinationViewController
-        
+
         sourceVC.view.addSubview(destinationVC.view)
         
-        destinationVC.view.transform = CGAffineTransformMakeScale(0.05, 0.05)
+        destinationVC.view.frame = CGRectMake(600, destinationVC.view.frame.origin.y, destinationVC.view.frame.size.width, destinationVC.view.frame.size.height)
         
-        UIView.animateWithDuration(0.5, delay: 0, options: .CurveEaseInOut, animations: { () -> Void in
-            destinationVC.view.transform = CGAffineTransformMakeScale(1.0, 1.0)
+        UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.4, options: .CurveEaseIn, animations: { () -> Void in
+            destinationVC.view.center = sourceVC.view.center
             }) { (finished) -> Void in
                 destinationVC.view.removeFromSuperview()
                 

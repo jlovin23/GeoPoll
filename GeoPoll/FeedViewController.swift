@@ -204,6 +204,8 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
 
             cell.question = questions[indexPath.row]
             let results = questions[indexPath.row]["results"] as! Array<Array<PFUser>>
+            cell.results = results
+            
             var eachOneChosen = [Double]()
             for result in results
             {
