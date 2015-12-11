@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import Parse
 
 class ChoiceCell: UITableViewCell
 {
     @IBOutlet var percentChosen: UILabel!
     @IBOutlet weak var title: UILabel!
+    
+    var answerResults: Array<PFUser>!
 
     override func awakeFromNib()
     {

@@ -63,6 +63,7 @@ class QuestionCell: UITableViewCell, UITableViewDataSource, UITableViewDelegate
         else
         {
             question?.fetchIfNeededInBackground()
+            cell.answerResults = results[indexPath.row]
             cell.title.text = (question["answers"] as! Array<String>)[indexPath.row]
             cell.title.textColor = UIColor.blackColor()
             cell.percentChosen.textColor = UIColor.clearColor()
@@ -74,25 +75,48 @@ class QuestionCell: UITableViewCell, UITableViewDataSource, UITableViewDelegate
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-        timer = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: "saveQuestionResults", userInfo: indexPath.row, repeats: false)
-      
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! ChoiceCell
+        let cell:ChoiceCell = tableView.cellForRowAtIndexPath(indexPath) as! ChoiceCell
+        cell.answerResults.append(PFUser.currentUser()!)
         
-        var totalVotes = 0.0
-        for number in numTimesOptionsChosen
+        var totalNumAnswers = 1
+        for var i = 0; i < table.numberOfRowsInSection(0); i++
         {
-            totalVotes += number
+            let index = NSIndexPath(forRow: i, inSection: 0)
+            let currentCell = table.cellForRowAtIndexPath(index) as! ChoiceCell
+            totalNumAnswers += currentCell.answerResults.count
         }
-        let percentThisOptionHasBeenChosen = (numTimesOptionsChosen[indexPath.row] / totalVotes) * 100
         
-        Material.showPercentageBar(cell, percentage: percentThisOptionHasBeenChosen, question: cell.title.text!)
+        let percentChosen = (Double(cell.answerResults.count) / Double(totalNumAnswers))*100
+        
+        Material.showPercentageBar(cell, percentage: percentChosen, question: cell.title.text!)
         cell.title.hidden = true
         
-        UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.3, options: .CurveEaseIn, animations: { () -> Void in
-            cell.title.frame = CGRectMake(cell.frame.origin.x + 30, cell.title.frame.origin.y, cell.title.frame.size.width, cell.title.frame.size.height)
-            }, completion: nil)
-        tableView.userInteractionEnabled = false
+        results[indexPath.row] = cell.answerResults
+        question["results"] = results
+        
+        question.saveInBackground()
+//        timer = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: "saveQuestionResults", userInfo: indexPath.row, repeats: false)
+//      
+//        let cell = tableView.cellForRowAtIndexPath(indexPath) as! ChoiceCell
+//        
+//        var totalVotes = 0.0
+//        for number in numTimesOptionsChosen
+//        {
+//            totalVotes += number
+//        }
+//        let percentThisOptionHasBeenChosen = (numTimesOptionsChosen[indexPath.row] / totalVotes) * 100
+//        
+//        Material.showPercentageBar(cell, percentage: percentThisOptionHasBeenChosen, question: cell.title.text!)
+//        cell.title.hidden = true
+//        
+//        UIView.animateWithDuration(0.3, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.3, options: .CurveEaseIn, animations: { () -> Void in
+//            cell.title.frame = CGRectMake(cell.frame.origin.x + 30, cell.title.frame.origin.y, cell.title.frame.size.width, cell.title.frame.size.height)
+//            }, completion: nil)
+//        tableView.userInteractionEnabled = false
+        
     }
+    
+    
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath)
     {
