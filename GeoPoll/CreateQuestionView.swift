@@ -104,20 +104,6 @@ class CreateQuestionView: UIViewController, UITableViewDelegate, UITableViewData
         addQuestion["question"] = questionLabel.text
         addQuestion["creator"] = PFUser.currentUser()
         
-        if questionType == "local"
-        {
-            self.setLocation()
-            
-            addQuestion["local"] = true
-            
-            addQuestion["location"] = currentGeo
-            
-        }
-        else
-        {
-            addQuestion["local"] = false
-        }
-        
         for var sec = 0; sec <= tableView.numberOfSections - 1; sec++
         {
             for var row = 0; row <= tableView.numberOfRowsInSection(sec) - 1; row++
@@ -132,7 +118,13 @@ class CreateQuestionView: UIViewController, UITableViewDelegate, UITableViewData
         
         addQuestion["answers"] = answers
         addQuestion["results"] = results
-        performSegueWithIdentifier("goToRecipients", sender: self)
+        addQuestion["answererIDs"] = []
+        addQuestion.saveInBackgroundWithBlock { (success, error) -> Void in
+            if error == nil
+            {
+                self.performSegueWithIdentifier("goToRecipients", sender: self)
+            }
+        }
     }
     
     func styleQuestionField()

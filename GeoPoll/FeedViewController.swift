@@ -77,7 +77,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func switchQuestionType(sender: UISegmentedControl)
     {
         getQuestions()
-        questionTableView.reloadData()
+//        questionTableView.reloadData()
         print("segmented tab pressed")
     }
     
@@ -122,25 +122,41 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     func getDirectQuestions()
     {
         let user: PFUser = PFUser.currentUser()!
-        
         let userData: PFObject = user["userData"] as! PFObject
-        
         userData.fetchIfNeeded()
         
         let groups: Array<PFObject> = userData["groups"] as! Array<PFObject>
-        
+
         for eachGroup in groups
         {
-            eachGroup.fetchIfNeeded()
-            let groupQuestions: Array<PFObject> = eachGroup["questions"] as! Array<PFObject>
+//            eachGroup.fetchIfNeeded()
+//            let groupQuestions: Array<PFObject> = eachGroup["questions"] as! Array<PFObject>
+//
+//            for quest in groupQuestions
+//            {
+//                questions.append(quest)
+//            }
             
-            for quest in groupQuestions
-            {
-                questions.append(quest)
-            }
+            eachGroup.fetchIfNeededInBackgroundWithBlock({ (questi, error) -> Void in
+                if error == nil
+                {
+                    print("no error")
+                    
+                    let groupQuestions: Array<PFObject> = eachGroup["questions"] as! Array<PFObject>
+                    
+                    for quest in groupQuestions
+                    {
+                        self.questions.append(quest)
+                    }
+                    self.questions.reverse()
+                }
+                else
+                {
+                    print("Error: \(error?.description)")
+                }
+            })
         }
-        
-        questions = questions.reverse()
+        self.questionTableView.reloadData()
     }
     
     // MARK: Table View
@@ -184,7 +200,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         if questions.count > 0
         {
-            questions[indexPath.row].fetchIfNeeded()
             let questionAnswers = (questions[indexPath.row]["answers"] as! Array<String>)
             if questionAnswers.count <= 4
             {

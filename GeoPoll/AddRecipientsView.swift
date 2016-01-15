@@ -57,69 +57,60 @@ class AddRecipientsView: UIViewController, UITableViewDataSource, UITableViewDel
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
-        return 2
+        return 1
     }
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        if indexPath.section == 0
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+        
+        if groups.count > 0
         {
-            let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-            
-            if groups.count > 0
-            {
-                groups[indexPath.row].fetchIfNeeded()
-                cell.textLabel!.text = groups[indexPath.row].objectForKey("name") as! String
-            }
-            else
-            {
-                cell.textLabel!.text = "Nah"
-            }
-            
-            return cell
+            groups[indexPath.row].fetchIfNeeded()
+            cell.textLabel!.text = groups[indexPath.row].objectForKey("name") as! String
         }
         else
         {
-            let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-            
-            if friends.count > 0
-            {
-                friends[indexPath.row].fetchIfNeeded()
-                cell.textLabel!.text = friends[indexPath.row].username
-            }
-            else
-            {
-                cell.textLabel!.text = "Nah"
-            }
-            
-            return cell
+            cell.textLabel!.text = "Nah"
         }
+        
+        return cell
+    
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
         let selectedCell = tableView.cellForRowAtIndexPath(indexPath)
-        selectedCell?.accessoryType = .Checkmark
-        selectedCell?.selected = true
+        selectedCell?.backgroundColor = OurColors.ponderBlue
+        question.saveInBackgroundWithBlock { (success, error) -> Void in
+            if error == nil
+            {
+                for var g = 0; g < self.groups.count; g++
+                {
+                    let indexPathThing = NSIndexPath(forRow: g, inSection: 0)
+                    if self.table.cellForRowAtIndexPath(indexPathThing)?.selected == true
+                    {
+                        let selectedGroup: PFObject = self.groups[g]
+                        selectedGroup.fetchIfNeeded()
+                        var groupQuestions = selectedGroup["questions"] as! Array<PFObject>
+                        groupQuestions.append(self.question)
+                        selectedGroup["questions"] = groupQuestions
+                        selectedGroup.saveInBackgroundWithBlock({ (aSuccess, anotherError) -> Void in
+                            if anotherError == nil
+                            {
+                                self.dismissViewControllerAnimated(true, completion: nil)
+                            }
+                        })
+                    }
+                }
+            }
+        }
     }
-    
-    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath)
+
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String?
     {
-        let selectedCell = tableView.cellForRowAtIndexPath(indexPath)
-        selectedCell?.accessoryType = .None
-        selectedCell?.selected = false
-    }
-    
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0
-        {
-            return "Groups"
-        }
-        else
-        {
-            return "Friends"
-        }
+        return "Groups"
     }
     
     @IBAction func goBack(sender: UIButton)
@@ -129,20 +120,7 @@ class AddRecipientsView: UIViewController, UITableViewDataSource, UITableViewDel
     
     @IBAction func send(sender: UIButton)
     {
-        question.saveInBackground()
         
-        for var g = 0; g < groups.count; g++
-        {
-            let indexPathThing = NSIndexPath(forRow: g, inSection: 0)
-            if table.cellForRowAtIndexPath(indexPathThing)?.selected == true
-            {
-                let selectedGroup: PFObject = groups[g]
-                selectedGroup.fetchIfNeeded()
-                var groupQuestions = selectedGroup["questions"] as! Array<PFObject>
-                groupQuestions.append(question)
-                selectedGroup["questions"] = groupQuestions
-                selectedGroup.saveInBackground()
-            }
-        }
+        
     }
 }
