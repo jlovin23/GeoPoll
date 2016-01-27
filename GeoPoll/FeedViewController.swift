@@ -35,7 +35,6 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         let currentUser = PFUser.currentUser()
         if currentUser != nil
         {
-            self.setLocation()
             self.getQuestions()
             
             navigationController!.navigationBar.barTintColor = OurColors.ponderBlue
@@ -127,36 +126,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let groups: Array<PFObject> = userData["groups"] as! Array<PFObject>
 
-        for eachGroup in groups
-        {
-//            eachGroup.fetchIfNeeded()
-//            let groupQuestions: Array<PFObject> = eachGroup["questions"] as! Array<PFObject>
-//
-//            for quest in groupQuestions
-//            {
-//                questions.append(quest)
-//            }
-            
-            eachGroup.fetchIfNeededInBackgroundWithBlock({ (questi, error) -> Void in
-                if error == nil
-                {
-                    print("no error")
-                    
-                    let groupQuestions: Array<PFObject> = eachGroup["questions"] as! Array<PFObject>
-                    
-                    for quest in groupQuestions
-                    {
-                        self.questions.append(quest)
-                    }
-                    self.questions.reverse()
-                }
-                else
-                {
-                    print("Error: \(error?.description)")
-                }
-            })
-        }
-        self.questionTableView.reloadData()
+        questions = userData["askedQuestions"] as! Array<PFObject>
     }
     
     // MARK: Table View

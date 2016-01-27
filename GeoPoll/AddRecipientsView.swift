@@ -81,31 +81,29 @@ class AddRecipientsView: UIViewController, UITableViewDataSource, UITableViewDel
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-        let selectedCell = tableView.cellForRowAtIndexPath(indexPath)
-        selectedCell?.backgroundColor = OurColors.ponderBlue
-        question.saveInBackgroundWithBlock { (success, error) -> Void in
-            if error == nil
-            {
-                for var g = 0; g < self.groups.count; g++
-                {
-                    let indexPathThing = NSIndexPath(forRow: g, inSection: 0)
-                    if self.table.cellForRowAtIndexPath(indexPathThing)?.selected == true
-                    {
-                        let selectedGroup: PFObject = self.groups[g]
-                        selectedGroup.fetchIfNeeded()
-                        var groupQuestions = selectedGroup["questions"] as! Array<PFObject>
-                        groupQuestions.append(self.question)
-                        selectedGroup["questions"] = groupQuestions
-                        selectedGroup.saveInBackgroundWithBlock({ (aSuccess, anotherError) -> Void in
-                            if anotherError == nil
-                            {
-                                self.dismissViewControllerAnimated(true, completion: nil)
-                            }
-                        })
-                    }
-                }
-            }
+        //choose selected group
+        let selectedGroup = groups[indexPath.row]
+        //get array of group members
+        selectedGroup.fetchIfNeeded()
+        print("Group: \(selectedGroup.description)")
+        let members = selectedGroup["members"] as! NSArray
+        for member in members
+        {
+            print("Entered loop")
+            print("Member desc \(member.description)")
+            let memberUserData = member["userData"] as! PFObject
+            memberUserData.fetchIfNeeded()
+            print("Member user data: \(memberUserData)")
+            var membersAsked = memberUserData["askedQuestions"] as! Array<PFObject>
+            print("Member asked questions: \(membersAsked)")
+            membersAsked.append(question)
+            memberUserData["askedQuestions"] = membersAsked
+            memberUserData.saveInBackground()
         }
+
+        //penetrate group members userData and add questions to their array of incoming questions
+        
+        //dismiss view controller
     }
 
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String?
