@@ -86,20 +86,27 @@ class AddRecipientsView: UIViewController, UITableViewDataSource, UITableViewDel
         //get array of group members
         selectedGroup.fetchIfNeeded()
         print("Group: \(selectedGroup.description)")
-        let members = selectedGroup["members"] as! NSArray
-        for member in members
-        {
-            print("Entered loop")
-            print("Member desc \(member.description)")
-            let memberUserData = member["userData"] as! PFObject
-            memberUserData.fetchIfNeeded()
-            print("Member user data: \(memberUserData)")
-            var membersAsked = memberUserData["askedQuestions"] as! Array<PFObject>
-            print("Member asked questions: \(membersAsked)")
-            membersAsked.append(question)
-            memberUserData["askedQuestions"] = membersAsked
-            memberUserData.saveInBackground()
-        }
+        let members = selectedGroup["members"] as! Array<PFUser>
+        
+        let currentData = PFUser.currentUser()?.objectForKey("userData") as! PFObject
+        currentData.fetchIfNeeded()
+        var currentAsked = currentData["askedQuestions"] as! Array<PFObject>
+        currentAsked.append(question)
+        currentData["askedQuestions"] = currentAsked
+        currentData.saveInBackground()
+        
+        
+        print(PFUser.currentUser())
+        print(members[0])
+//        print(members[0])
+//        let memberUserData = members[0]["userData"] as! PFObject
+//        memberUserData.fetchIfNeeded()
+//        print("Member user data: \(memberUserData)")
+//        var membersAsked = memberUserData["askedQuestions"] as! Array<PFObject>
+//        print("Member asked questions: \(membersAsked)")
+//        membersAsked.append(question)
+//        memberUserData["askedQuestions"] = membersAsked
+//        memberUserData.saveInBackground()
 
         //penetrate group members userData and add questions to their array of incoming questions
         
