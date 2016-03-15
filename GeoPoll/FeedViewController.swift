@@ -171,35 +171,35 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         if questions.count > 0
         {
             let questionAnswers = (questions[indexPath.row]["answers"] as! Array<String>)
-            if questionAnswers.count <= 4
-            {
-                cell.table.scrollEnabled = false
-            }
-            else
-            {
-                cell.table.scrollEnabled = true
-            }
-            
-            cell.label.text = questions[indexPath.row]["question"] as! String
-            if let creator = questions[indexPath.row]["creator"]
-            {
-                creator.fetchIfNeeded()
-                cell.sentFromName.text = creator["username"] as! String
-            }
-
-            cell.question = questions[indexPath.row]
-            let results = questions[indexPath.row]["results"] as! Array<Array<PFUser>>
-            cell.results = results
-            
-            var eachOneChosen = [Double]()
-            for result in results
-            {
-                eachOneChosen.append(Double(result.count))
-            }
-            cell.numTimesOptionsChosen = eachOneChosen
-            cell.table.reloadData()
-           
-            cell.selectionStyle = .None
+//            if questionAnswers.count <= 4
+//            {
+//                cell.table.scrollEnabled = false
+//            }
+//            else
+//            {
+//                cell.table.scrollEnabled = true
+//            }
+//            
+//            cell.label.text = questions[indexPath.row]["question"] as! String
+//            if let creator = questions[indexPath.row]["creator"]
+//            {
+//                creator.fetchIfNeeded()
+//                cell.sentFromName.text = creator["username"] as! String
+//            }
+//
+//            cell.question = questions[indexPath.row]
+//            let results = questions[indexPath.row]["results"] as! Array<Array<PFUser>>
+//            cell.results = results
+//            
+//            var eachOneChosen = [Double]()
+//            for result in results
+//            {
+//                eachOneChosen.append(Double(result.count))
+//            }
+//            cell.numTimesOptionsChosen = eachOneChosen
+//            cell.table.reloadData()
+//           
+//            cell.selectionStyle = .None
         }
         else
         {
